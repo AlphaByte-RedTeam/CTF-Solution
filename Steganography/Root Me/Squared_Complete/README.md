@@ -3,8 +3,8 @@
 Platform: Root Me </br>
 Type: `Steganography` </br>
 Link: [Squared](https://www.root-me.org/en/Challenges/Steganography/Squared-38) </br>
-Hint: Use terminal to find passphrase
-Clue: Joker laugh
+Hint: Use terminal to find passphrase </br>
+Clue: Joker laugh </br>
 
 > I encourage you to find by yourself first! </br>
 [Passphrase](./passphrase.txt) </br>
