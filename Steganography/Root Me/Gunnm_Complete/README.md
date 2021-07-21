@@ -14,5 +14,7 @@ Clue: An old japanese cartoon start with **"T"** </br>
 ## Step 1
 Open any image editing tools like Photoshop, Gimp, etc. </br>
 
+![ch1_passphrase](./ch1_passphrase.png) </br>
+
 ## Step 2
 Zoom in and modify the image, e.g coloring change, HSL change, etc. </br>
