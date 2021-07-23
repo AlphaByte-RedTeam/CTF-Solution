@@ -6,4 +6,4 @@
 | 2	 | [Squared](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Squared_Complete) | `Easy` |
 | 3	 | [Dot and Next Line](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Dot%20and%20Next%20Line_Complete) | `Moderate` |
 | 4	 | [Steganomobile](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Steganomobile_Complete) | `Moderate` |
-| 5	 | [Twitter Secrete Messages](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Twitter%20Secrete%20Messages_Complete) | `Easy` |
+| 5	 | [Twitter Secrete Messages](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Twitter%20Secret%20Messages_Complete) | `Easy` |
