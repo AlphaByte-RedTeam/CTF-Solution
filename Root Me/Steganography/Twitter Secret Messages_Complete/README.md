@@ -7,7 +7,7 @@ Hint: Utilize your Google </br>
 Clue: There's a hidden messages in the quote </br>
 
 > I encourage you to find by yourself first! </br>
-[Solution](./passphrase.txt) </br>
+[Flag](./passphrase.txt) </br>
 
 ---
 

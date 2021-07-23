@@ -7,7 +7,7 @@ Hint: The title is already the best hint </br>
 Clue: Palace/Castle </br>
 
 > I encourage you to find by yourself first! </br>
-[Solution](./passphrase.txt) </br>
+[Flag](./passphrase.txt) </br>
 
 --- 
 

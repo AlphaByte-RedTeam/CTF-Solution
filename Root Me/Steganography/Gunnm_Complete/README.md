@@ -7,7 +7,7 @@ Hint: Watch the image carefully, you can use other image editing tools </br>
 Clue: An old japanese cartoon start with **"T"** </br>
 
 > I encourage you to find by yourself first! </br>
-[Passphrase](./passphrase.txt) </br>
+[Flag](./passphrase.txt) </br>
 
 ---
 

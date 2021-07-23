@@ -7,7 +7,7 @@ Hint: Think an old cellphone </br>
 Clue: Old but gold </br>
 
 > I encourage you to find by yourself first! </br>
-[Solution](./passphrase.txt) </br>
+[Flag](./passphrase.txt) </br>
 
 ---
 
