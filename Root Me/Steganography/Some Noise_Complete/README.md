@@ -12,10 +12,13 @@ Clue: No clue, only a gibberish text.
 ---
 
 ## Step 1
-Open audacity and import the `ch3.wav` file </br>
+Download the data by inspecting the `Start button challenge` </br>
 
 ## Step 2
-Slow down the audio to `0.500` and then reverse it </br>
+Open audacity and import the `ch3.wav` file </br>
 
 ## Step 3
+Slow down the audio to `0.500` and then reverse it </br>
+
+## Step 4
 You can now hear what the speaker said </br>
