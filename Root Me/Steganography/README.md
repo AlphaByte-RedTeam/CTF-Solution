@@ -11,3 +11,4 @@
 | 7 	 | [Yellow Dots](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Yellow%20Dots_Complete) | `Moderate` |
 | 8	 | [Audio Stegano](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Audio%20Stegano_Complete) | `Hard` |
 | 9	 | [Poem from Space](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Poem%20from%20Space_Complete) | `Moderate` |
+| 10	 | [We Need to Go Deeper](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/We%20Need%20to%20Go%20Deeper_Complete) | `Moderate` |
