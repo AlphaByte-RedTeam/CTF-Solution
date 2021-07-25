@@ -12,7 +12,7 @@ Clue: Joker laugh </br>
 ---
 
 ## Step 1
-Open terminal and type `strings -a ch2.jpg`
+Open terminal and type `strings -a ch2.jpg` </br>
 
 ## Step 2
-Search the entire strings to find the passphrase
+Search the entire strings to find the passphrase </br>
