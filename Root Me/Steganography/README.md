@@ -10,3 +10,4 @@
 | 6	 | [Some Noise](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Some%20Noise_Complete) | `Moderate` |
 | 7 	 | [Yellow Dots](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Yellow%20Dots_Complete) | `Moderate` |
 | 8	 | [Audio Stegano](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Audio%20Stegano_Complete) | `Hard` |
+| 9	 | [Poem from Space](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Steganography/Poem%20from%20Space_Complete) | `Moderate` |
