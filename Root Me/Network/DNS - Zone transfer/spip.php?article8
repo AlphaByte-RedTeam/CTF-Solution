@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="fr" xml:lang="fr">
+<head>
+<base href="https://www.root-me.org/" />
+<title>Documentation/Réseaux/Application : Faiblesse des serveurs DNS par transfert de zone. [Root Me : plateforme d'apprentissage dédiée au Hacking et à la Sécurité de l'Information]</title>
+<meta name="keywords" content="Documentation,R&#233;seaux,Application,Faiblesse des serveurs DNS par transfert de zone."/>
+<meta name="author" content="g0uZ"/>
+<link rel="alternate" type="application/rss+xml" title="RSS [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS (breves) [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-breves&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS Forum [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-forums&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS challenges [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-challenges&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS solutions [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-solutions&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS CTF all the day [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-ctfalltheday&amp;lang=fr" />
+<link rel="alternate" type="application/rss+xml" title="RSS CTF calendar [Root Me : plateforme d&#039;apprentissage d&#233;di&#233;e au Hacking et &#224; la S&#233;curit&#233; de l&#039;Information]" href="https://www.root-me.org?page=backend-ctf&amp;lang=fr" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />            
+<link rel='stylesheet' href='local/cache-css/b39b4735e030e2fae0ca67222d6e73e1.css?1627701512' type='text/css' />    
+<script type="text/javascript">/* <![CDATA[ */
+var box_settings = {tt_img:true,sel_g:"#documents_portfolio a[type=\'image/jpeg\'],#documents_portfolio a[type=\'image/png\'],#documents_portfolio a[type=\'image/gif\']",sel_c:".mediabox, .popin",trans:"elastic",speed:"100",ssSpeed:"2500",maxW:"90%",maxH:"90%",minW:"400px",minH:"",opa:"0.8",str_ssStart:"Diaporama",str_ssStop:"Arrêter",str_cur:"{current}/{total}",str_prev:"Précédent",str_next:"Suivant",str_close:"Fermer",splash_url:""};
+var box_settings_splash_width = "600px";
+var box_settings_splash_height = "90%";
+var box_settings_iframe = true;
+/* ]]> */</script>
+<!-- insert_head_css -->
+<script type='text/javascript'>
+var jQl={q:[],dq:[],gs:[],ready:function(a){"function"==typeof a&&jQl.q.push(a);return jQl},getScript:function(a,c){jQl.gs.push([a,c])},unq:function(){for(var a=0;a<jQl.q.length;a++)jQl.q[a]();jQl.q=[]},ungs:function(){for(var a=0;a<jQl.gs.length;a++)jQuery.getScript(jQl.gs[a][0],jQl.gs[a][1]);jQl.gs=[]},bId:null,boot:function(a){"undefined"==typeof window.jQuery.fn?jQl.bId||(jQl.bId=setInterval(function(){jQl.boot(a)},25)):(jQl.bId&&clearInterval(jQl.bId),jQl.bId=0,jQl.unqjQdep(),jQl.ungs(),jQuery(jQl.unq()), "function"==typeof a&&a())},booted:function(){return 0===jQl.bId},loadjQ:function(a,c){setTimeout(function(){var b=document.createElement("script");b.src=a;document.getElementsByTagName("head")[0].appendChild(b)},1);jQl.boot(c)},loadjQdep:function(a){jQl.loadxhr(a,jQl.qdep)},qdep:function(a){a&&("undefined"!==typeof window.jQuery.fn&&!jQl.dq.length?jQl.rs(a):jQl.dq.push(a))},unqjQdep:function(){if("undefined"==typeof window.jQuery.fn)setTimeout(jQl.unqjQdep,50);else{for(var a=0;a<jQl.dq.length;a++)jQl.rs(jQl.dq[a]); jQl.dq=[]}},rs:function(a){var c=document.createElement("script");document.getElementsByTagName("head")[0].appendChild(c);c.text=a},loadxhr:function(a,c){var b;b=jQl.getxo();b.onreadystatechange=function(){4!=b.readyState||200!=b.status||c(b.responseText,a)};try{b.open("GET",a,!0),b.send("")}catch(d){}},getxo:function(){var a=!1;try{a=new XMLHttpRequest}catch(c){for(var b=["MSXML2.XMLHTTP.5.0","MSXML2.XMLHTTP.4.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP"],d=0;d<b.length;++d){try{a= new ActiveXObject(b[d])}catch(e){continue}break}}finally{return a}}};if("undefined"==typeof window.jQuery){var $=jQl.ready,jQuery=$;$.getScript=jQl.getScript};
+jQl.loadjQ('local/cache-js/48c30aea01267840d55b549e308cf4ce.js?1627701512')
+</script>
+<!-- insert_head -->
+<script type="text/javascript">jQl.loadjQ("https://www.root-me.org/local/cache-js/jsdyn-script_onload_js-0c69b8b3.js?1627121069");</script>
+<link rel="icon" type="image/x-icon" href="https://www.root-me.org/squelettes/img/rblack.ico" />
+<link rel="icon" type="image/png" href="https://www.root-me.org/squelettes/img/rblackGrand32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.root-me.org/squelettes/img/rblackGrand16.png" sizes="16x16" />   
+</head>
+<body class="antialiased hide-extras" dir="ltr" itemscope itemtype="https://schema.org/WebPage">
+<header id="header" role="banner">
+<nav class="top-bar" data-topbar>
+<ul class="title-area" itemprop="isPartOf" itemscope itemtype="https://schema.org/WebSite">
+<li class="name">
+<a itemprop="url" href="https://www.root-me.org?lang=fr" title="la root est longue mais la voie est Libre" target="_top">
+<img width="48" height="48" class="show-for-medium-up vmiddle invert" alt="logo https://www.root-me.org" src="IMG/siteon0.svg?1574327304" itemprop="image"  />
+<img width="48" height="48" class="show-for-small-only toggleSidebar vmiddle" alt="logo https://www.root-me.org" src="IMG/siteon0.svg?1574327304" itemprop="image" />
+<span class="show-for-large-up blanc" itemprop="name">Root&nbsp;Me</span>
+</a>
+</li>    
+</ul>
+<section class="top-bar-section">
+<ul class="right">    
+<li class="lang">
+<span>
+<span>
+</span>
+<a href="/fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone#"><img width="16" height="16" src="squelettes/img/drap_fr.svg" alt="fr" class="grayscale" title="fr"/></a>
+</span>
+</li>
+<li>
+<a style="height: 24px; padding: 10px 10px 0 10px;" class="mediabox pageajax boxHeight-500px" href="./?page=identifiants&amp;lang=fr" title="Créer un compte"><img src="squelettes/img/register.svg" height="16" width="16"  class="vtop"/></a>
+<a style="height: 24px; padding: 15px 10px 0 10px;" class="mediabox pageajax boxHeight-390px" href="./?page=login&amp;lang=fr" title="Se connecter"><img src="squelettes/img/login.svg" height="16" width="16"  class="vtop"/></a>
+</li>            </ul>   
+<ul class="left">
+<li class="hide-for-small-only"><a title="Foire Aux Questions" href="https://www.root-me.org?page=faq&amp;lang=fr"><img src='squelettes/img/faq_nb.svg?1566640929' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="Plan du site" href="https://www.root-me.org?page=plan&amp;lang=fr"><img src='squelettes/img/plan_nb.svg?1566640893' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="Contact" href="https://www.root-me.org?page=contact&amp;lang=fr"><img src='squelettes/img/contact_nb.svg?1566640717' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="État des services" href="https://www.root-me.org?page=structure&amp;inc=inclusions%2Fservices&amp;lang=fr"><img src="squelettes/img/service_state_nb.svg" width="32" height="32"/></a></li>
+<li class="hide-for-small-only"><a title="Shop" href="https://www.root-me.org?page=structure&amp;inc=page-shop&amp;lang=fr"><img src="squelettes/img/shop_nb.svg" width="32" height="32"/></a></li>            
+<li class="search">
+<form action="https://www.root-me.org" method="get">
+<input type="hidden" value="recherche" name="page"/>
+<input type="hidden" value="fr" name="lang" />                    
+<input class="search" name="recherche" placeholder="Rechercher" minlength="3" type="search" />                        
+</form>
+</li>
+</ul>
+</section>
+</nav>
+</header>
+<div id="container">
+<div id="main_row">
+<div id="aside_wrapper">
+<aside id="aside" role="complementary" itemscope itemtype="https://schema.org/WPSideBar">
+<nav class="top-bar" data-topbar="" >
+<div class="top-bar-section" role="navigation" itemprop="hasPart" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<ul class="right">
+<li class="has-dropdown">
+<a itemprop="url" href="fr/Capture-The-Flag/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon188.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Capture The Flag</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Capture The Flag</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Capture-The-Flag/Calendrier/" title="Le calendrier des CTF &#224; venir. N&#039;h&#233;sitez pas &#224; nous indiquer ceux que l&#039;on aurait oubli&#233; en envoyant un message via [la page de contact-&gt;./?page=contact&#38;lang=fr]"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon195.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Calendrier
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Capture-The-Flag/CTF-all-the-day/" title="Am&#233;liorez vos techniques de hack dans un environnement r&#233;el o&#249; l&#039;objectif est de compromettre, &#171; rooter &#187; compl&#232;tement la machine !"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon196.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+CTF all the day
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="fr/Challenges/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon5.svg?1615890753" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Challenges</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Challenges</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/App-Script/" title="Cette s&#233;rie d&#039;&#233;preuve vous confronte aux vuln&#233;rabilit&#233;s li&#233;es &#224; des faiblesses d&#039;environnement, de configuration ou encore &#224; des erreurs de d&#233;veloppement dans des langages de script ou de programmation."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon189.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+App - Script
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/App-Systeme/" title="Cette s&#233;rie d&#039;&#233;preuve vous confronte aux vuln&#233;rabilit&#233;s applicatives principalement li&#233;es aux erreurs de programmation aboutissant &#224; des corruptions de zones m&#233;moire."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon203.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+App - Système
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Cracking/" title="Ces challenges permettent de comprendre le sens du terme &#171; langage compil&#233; &#187;. Ce sont des fichiers binaires &#224; d&#233;cortiquer pour aller chercher les instructions bas niveau permettant de r&#233;pondre au probl&#232;me pos&#233;."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon69.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cracking
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Cryptanalyse/" title="Retrouvez les secrets prot&#233;g&#233;s par des syst&#232;mes de chiffrement plus ou moins solides en r&#233;alisant des attaques cryptographiques."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon18.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cryptanalyse
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Forensic/" title="Mettez &#224; l&#039;&#233;preuve vos techniques d&#039;investigations num&#233;riques en analysant des traces m&#233;moire, des fichiers de journalisation, des captures r&#233;seaux..."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon208.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Forensic
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Programmation/" title="Automatisez des t&#226;ches de plus en plus complexes pour valider ces challenges en moins de quelques secondes."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon17.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Programmation
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Realiste/" title="Vous allez vous retrouver dans des environnements complets sur des th&#232;mes divers et vari&#233;s. &#192; vous d&#039;en comprendre le fonctionnement, d&#039;identifier les faiblesses et de cibler les vuln&#233;rabilit&#233;s &#224; exploiter."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon70.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Réaliste
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Reseau/" title="Apprenez &#224; analyser et &#224; manipuler les diff&#233;rents protocoles et services les plus courants pour les tourner &#224; votre avantage."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon182.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Réseau
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Steganographie/" title="Si la cryptographie est l&#039;art du secret, la st&#233;ganographie est l&#039;art de la dissimulation : l&#039;objet de la st&#233;ganographie n&#039;est pas de rendre un message inintelligible aux personnes non autoris&#233;es mais de le faire passer inaper&#231;u. "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon67.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Stéganographie
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Web-Client/" title="Apprenez &#224; exploiter les failles des applications web pour impacter leurs utilisateurs ou contourner des m&#233;canismes de s&#233;curit&#233; c&#244;t&#233; client."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon16.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web - Client
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Challenges/Web-Serveur/" title="Ces &#233;preuves vous permettront d&#039;appr&#233;hender les techniques intrusives retrouv&#233;es sur le web, allant de l&#039;exploitation de faiblesses de configuration jusqu&#039;aux injections de code c&#244;t&#233; serveur."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon68.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web - Serveur
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="fr/Communaute/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon19.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Communauté</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Communauté</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Canal-IRC/" title="Informations concernant le canal IRC. Discutez en ligne d&#232;s maintenant en utilisant [notre page webIRC-&gt;./spip.php?page=webirc]"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon179.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Canal IRC
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Chat-Box/" title="Laissez nous un message "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon21.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Chat Box
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Classement/" title="Classement des challenges"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon98.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Classement
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Contribuer/" title="Vous avez des id&#233;es, des comp&#233;tences dans le domaine de la s&#233;curit&#233; informatique ? N&#039;h&#233;sitez pas, participez ;-)"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon175.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Contribuer
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Forum/" title="Vous disposez ici d&#039;un espace vous permettant d&#039;&#233;changer, de dialoguer avec les autres membres de la communaut&#233;. Faites en bon usage."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon112.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Forum
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Communaute/Serveur-Discord/" title="Informations sur le serveur Discord."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon180.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Serveur Discord
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown active">
+<a itemprop="url" href="fr/Documentation/">
+<span class="logo left">
+<img  src="IMG/rubon1.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Documentation</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Documentation</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Documentation/Applicatif/" title="L&#039;exploitation syst&#232;me et applicative reste tr&#232;s importante, que ce soit dans l&#039;optique exploit, pentest ou audit."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon2.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Applicatif
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Documentation/Cracking/" title="Le cracking permet de modifier le comportement de programmes informatiques"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon13.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cracking
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Documentation/Cryptologie/" title="La cryptologie, &#233;tymologiquement la science du secret, ne peut &#234;tre vraiment consid&#233;r&#233;e comme une science que depuis peu de temps. Cette science englobe la cryptographie &#8212; l&#039;&#233;criture secr&#232;te &#8212; et la cryptanalyse &#8212; l&#039;analyse de cette derni&#232;re."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon4.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cryptologie
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Documentation/Reseaux/" title="Protocoles, architecture, techniques d&#039;attaques, etc"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon12.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Réseaux
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Documentation/Web/" title="Tout syst&#232;me d&#039;information expos&#233; sur le r&#233;seau internet repr&#233;sente une cible, que ce soit &#224; travers les sites internet ou via des services web prenant des formes diverses."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon210.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="fr/Informations/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon106.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Informations</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Informations</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Informations/Faiblesses-decouvertes/" title="Comme n&#039;importe quel syst&#232;me d&#039;informations ce portail comporte des vuln&#233;rabilit&#233;s... "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon111.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Faiblesses découvertes
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Informations/L-association/" title="Root-Me est une association loi de 1901 &#224; but non lucratif dont l&#039;objectif est de promouvoir la diffusion libre du savoir relatif au hacking et &#224; la s&#233;curit&#233; de l&#039;information."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon107.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+L&#8217;association
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Informations/Mentions-Legales/" title="Au contact d&#039;un univers aussi grand que le n&#244;tre qui traite de nombreux domaines controvers&#233;s et de qualifications n&#039;ayant pas bonne r&#233;putation, il est devenu indispensable de mettre en garde l&#039;utilisateur sur l&#039;utilisation du portail ainsi que de ses services."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon109.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Mentions Légales
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Informations/Partenaires/" title="Nous sommes actuellement &#224; la recherche de partenaires. Si vous souhaitez participer &#224; notre projet, n&#039;h&#233;sitez pas &#224; [nous contacter-&gt;./spip.php?page=contact]. "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon110.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Partenaires
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="fr/Informations/Sponsors/" title="Les sponsors qui nous aident &#224; faire vivre l&#039;association et ce portail."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon201.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Sponsors
+</a>
+</li>
+</ul>
+</li>
+<li class="">
+<a itemprop="url" href="fr/Outils/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon6.svg?1583824598" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Outils</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="small-12 columns hide-for-medium-only">
+<h3>176 visiteurs en ce moment</h3>
+derniers inscrits&nbsp;:
+<ul class="inline-list ts">
+<li><a class=" forum"  title="profil de loleas" href="/loleas?lang=fr">loleas</a></li>
+<li><a class=" forum"  title="profil de copterjs" href="/copterjs?lang=fr">copterjs</a></li>
+<li><a class=" forum"  title="profil de PATRICK" href="/PATRICK-596556?lang=fr">PATRICK</a></li>
+<li><a class=" forum"  title="profil de BitfyPro" href="/BitfyPro?lang=fr">BitfyPro</a></li>
+<li><a class=" forum"  title="profil de bsao17" href="/bsao17?lang=fr">bsao17</a></li>
+<li><a class=" forum"  title="profil de kirabi" href="/kirabi?lang=fr">kirabi</a></li>
+<li><a class=" forum"  title="profil de lululu9" href="/lululu9-596551?lang=fr">lululu9</a></li>
+</ul>     
+<h3>Offres</h3>
+<a name='pagination_offres' id='pagination_offres'></a>
+<ul>
+<li>
+<a href="https://elysium-security.com" title="Elysium Security" target="_BLANK"><span style="background: white; border-radius: 3px;width:24px height: 24px; line-height: 32px; padding: 2px; margin:2px;"><img class="vmiddle" src="https://console.pro.root-me.org/IMG/organisationon32.png?1598344821" alt="organisation_logo" style="width: 20px; height:20px; object-fit: cover;" /></span></a>&nbsp;<span class="gras txs">CDI</span>&nbsp;<a title="Elysium Security : Venez renforcer les &#233;quipes d&#039;ELYSIUM en tant qu&#039;expert et r&#233;f&#233;rent technique" class="txs" href="./?page=news&amp;inc=offre&amp;id_offre=74&amp;lang=fr">Consultant sécurité</a>
+</li>
+</ul>
+<div class="pagination"></div>            <h3>Chatbox</h3>
+<div class='ajaxbloc ajax-id-chat_box_mini' data-ajax-env='8a7OWOeKPbExCZa5lBcldm4yqoZTTU8UVLBrHEPwkiXVwpZNyF9nJAZu3RklKz2P8x+PwhQS1q/ndE/vtRVZcUSiUeHOm2JiUFn2HpNcKubpMaGz7Bgq0ydPMRkSWPZfU6n22ceyYIskm8vPsPdTjglB3vJdOqj9sF4ALTFBuM37YetDiRscNsWKszAXaZs4G3nsuEUra5e2cRiM' data-origin="/fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone">
+<a name='pagination_chat_box_archive' id='pagination_chat_box_archive'></a>
+<ul>
+<li>
+<span class="left"><img class="vmiddle logo_auteur logo_6forum" width="48" height="48" src="IMG/auton0.png?1574278497" alt="LAST34"  /></span>
+<span class="left" style="margin-left: 0.5rem;">
+<a class=" forum"  title="profil de LAST34" href="/LAST34?lang=fr">LAST34</a><br/>
+<i class="txs left">4 août 2021&nbsp;à&nbsp;10:32</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-left"><p>Salut , il ya des personnes qui sont de montpellier !?</p></div>
+</li>
+<li>
+<span class="right"><img class="vmiddle logo_auteur logo_6forum" width="48" height="30" src="IMG/auton139144.jpg?1516455673" alt="Zey_Roxx"  /></span>
+<span class="text-right right" style="margin-right: 0.5rem;">
+<a class=" forum"  title="profil de Zey_Roxx" href="/Zey_Roxx?lang=fr">Zey_Roxx</a><br/>
+<i class="txs text-right">3 août 2021&nbsp;à&nbsp;09:10</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-right"><p>@NirvanaK456 Si tu veux, recherche des writes up sur internet et tu pourras trouver ton bonheurs</p></div>
+</li>
+<li>
+<span class="left"><img class="vmiddle logo_auteur logo_6forum" width="48" height="48" src="IMG/auton0.png?1574278497" alt="NirvanaK456"  /></span>
+<span class="left" style="margin-left: 0.5rem;">
+<a class=" forum"  title="profil de NirvanaK456" href="/NirvanaK456?lang=fr">NirvanaK456</a><br/>
+<i class="txs left">3 août 2021&nbsp;à&nbsp;04:30</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-left"><p>hey svp quelqu’un aurait de la documentation ou des exemples de CTF qui m’aiderait pour les chall programmation shellcoding je ne sais pas trop par ou commencer</p></div>
+</li>
+</ul>
+<div class="pagination-centered">
+<ul class="pagination">
+<li><a href='/fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone?debut_chat_box_archive=3#pagination_chat_box_archive' class='lien_pagination gris' rel='nofollow'>&gt;</a></li>
+</ul>
+</div>
+</div><!--ajaxbloc-->
+<span>            
+<a href="./?page=chatbox_message&amp;lang=fr" title="Poster un message" class="gris mediabox pageajax"><img src='squelettes/img/post.png' alt='' width='32' height='32' />&nbsp;Poster un message</a><br/>
+<a class="gris" href="/fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone" title="Rafraichir" onclick="ajaxReload('chat_box_mini'); return false;"><img src='squelettes/img/refresh.png' alt='' width='32' height='32' />&nbsp;Rafraichir</a>                
+</span>
+<div class="clearfix"></div>            <h3>Sponsorisé par</h3>
+<ul>
+<li><a href="https://www.ensta-bretagne.fr/fr" target="_BLANK" >ENSTA Bretagne</a></li>
+<li><a href="https://public.geoide.fr" target="_BLANK" >GEOIDE</a></li>
+<li><a href="https://www.synacktiv.com" target="_BLANK" >Synacktiv</a></li>
+<li><a href="https://www.nbs-system.com" target="_BLANK" >NBS System</a></li>
+<li><a href="http://www.provadys.com" target="_BLANK" >Provadys</a></li>
+<li><a class="mediabox pageajax" href="./?page=structure&amp;inc=page-don&amp;lang=fr">Vous&nbsp;;-)</a></li>
+</ul>        </div>
+</aside>
+</div>        <div id="main_wrapper" class="row">
+<ul id="breadcrumb" class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a href="https://www.root-me.org?lang=fr" title="Accueil" itemprop="item"><span itemprop="name">Accueil</span></a>
+<meta itemprop="position" content="1">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a title="Documentation" href="https://www.root-me.org/fr/Documentation/" itemprop="item"><span itemprop="name">Documentation</span></a>
+<meta itemprop="position" content="2">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a title="Réseaux" href="https://www.root-me.org/fr/Documentation/Reseaux/" itemprop="item"><span itemprop="name">Réseaux</span></a>
+<meta itemprop="position" content="3">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a title="Application" href="https://www.root-me.org/fr/Documentation/Reseaux/Application/" itemprop="item"><span itemprop="name">Application</span></a>
+<meta itemprop="position" content="4">
+</li>
+</ul>        
+<main id="main" itemprop="mainEntity" itemscope itemtype="https://schema.org/Article">
+<div class='ajaxbloc' data-ajax-env='Oa/GXOeKJbBxyVnrgYn4/cuUNXl9aBTWMW+SwsZ3fPd5QBs49siHaJGifwQrZkDS49cEKgMmIfxmlFgzdDqLrjKuNaxsVHf0dcSB/XR21shUc/kJtt0O0A9yVu4taVMhFGVl7EYx4v12NpYV/V6paFdZkZ9wDCHMWbSE6Ufh5QOi7OHctRfWBAekD4+jDC7nNL2+IgDLfmRcki+RPYBtVIve' data-origin="/fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone">
+<div  class="small-12 columns"  >
+<div class="tile">
+<div class="t-body tb-padding"  >
+<div class="row">
+<div class="large-8 columns">        
+<h1 class="crayon article-titre-8 "><span  itemprop="headline">Faiblesse des serveurs DNS par transfert de zone.</span>&nbsp;&nbsp;&nbsp;<script type="text/javascript">
+/*
+Open Centered Popup Window Script-
+DHTMLShock (www.dhtmlshock.com)
+To add more shock to your site, visit www.DHTMLShock.com
+*/
+function centrarVentana(theURL,winName,features, myWidth, myHeight, isCenter) { //v3.0
+if(window.screen)if(isCenter)if(isCenter=="true"){
+var myLeft = (screen.width-myWidth)/2;
+var myTop = (screen.height-myHeight)/2;
+features+=(features!='')?',':'';
+features+=',left='+myLeft+',top='+myTop;
+}
+window.open(theURL,winName,features+((features!='')?',':'')+'width='+myWidth+',height='+myHeight);
+}
+</script><a href="javascript:;" onclick="centrarVentana('?page=imprimir_articulo&amp;id_article=8','Imprimir_documento','scrollbars=yes,resizable=yes','700','470','true')" title="Version imprimable de cet article" style="border:none"><img src="plugins/auto/imprimir_documento/v0.2.2/impresora.gif" style="border:none" alt="Version imprimable de cet article" /></a>
+<style type="text/css">
+div.spip_tipafriend {display:inline}
+</style>
+<div class="spip_tipafriend">
+<a href="./?page=tip_a_friend&amp;id=8&amp;type=article&amp;mex=&amp;nex=&amp;mdes=&amp;lang=fr"
+target="_blank"  onclick="taf_popup('./?page=tip_a_friend&amp;id=8&amp;type=article&amp;mex=&amp;nex=&amp;mdes=&amp;close_button=oui&amp;lang=fr&amp;usend=article', 'Tip A Friend'); return false;" 
+title="Envoyer cette page par email">
+<img src="plugins/auto/tipafriend/v1.6.10/img/mail_16.png" alt="Tip A Friend" title="Envoyer cette page par email"
+class="spip_tipafriend_image" border="0" />
+</a>
+</div>
+<script type='text/javascript'>
+<!--
+function taf_get_url() {
+var url = document.URL, d_index = url.indexOf("#"), 
+t_url = (d_index!==-1) ? url.substring(0, d_index) : url;
+return t_url;
+}
+function taf_popup(url, name) {
+if(!name) name='Tip A Friend';
+var width = 640;
+var height = 540;
+var left = (screen.width - width)/2;
+var top = (screen.height - height)/2;
+var here = taf_get_url();
+var new_f = window.open(
+url+"&titre="+escape(document.title)+"&url="+escape(here), name, 
+"menubar=0,directories=0,status=0,location=0,scrollbars=1,width="+width+",height="+height+",top="+top+",left="+left
+);
+new_f.focus();
+}
+//-->
+</script>
+</h1>
+</div>
+<div class="large-4 columns panel callout radius">
+<time itemprop="datePublished" datetime="2006-01-17T14:34:43+01:00">mardi&nbsp;17&nbsp;janvier 2006</time><br/>
+par 
+<span itemscope="" itemprop="author publisher" itemtype="http://schema.org/Person"><a class=" minirezo" itemprop="name url" title="profil de g0uZ" href="/g0uZ?lang=fr">g0uZ</a></span>
+<span style="margin-top: 5px;" id="socialtags"></span>
+<meta itemprop="keywords" content="" />
+</div>
+</div>
+<div class="texte crayon article-texte-8 " itemprop="text">
+<p>Le DNS est un maillon essentiel au monde Internet puisqu’il permet de retrouver les serveurs attachés à un site WEB ou à un service FTP par exemple. Ainsi, lorsqu’un utilisateur demande une connexion HTTP, sa requête passe obligatoirement par une multitude de serveur DNS chacun délivrant une information à chaque fois plus précise jusqu’à retrouver la source. C’est littéralement le principe de la toile d’araignée : on part d’un bout pour arriver à l’autre en passant par un nombre conséquent de nœuds. Le DNS, c’est à peu près cela.</p>
+<p>   BIND est l’implémentation la plus répandue du protocole DNS permettant d’assurer la résolution des noms de domaines Internet et la correspondance adresse IP et nom de domaine. De nombreuses vulnérabilités ont été publiées durant les dernières années affectant le code propre à l’application BIND. Ainsi, sur les serveurs vulnérables, ces failles sont susceptibles de provoquer un DOS (déni de service) du service DNS ou l’exécution de commandes arbitraires avec des privilèges autres que simple utilisateur, notamment grâce à l’exploitation d’un débordement de tampon.</p>
+<p>   Néanmoins (et bien trop souvent d’ailleurs), on retrouve une faille rudimentaire sur les serveurs DNS qui accorde en lecture un florilège d’informations sensibles. Effectivement, les commandes de transfert afin de mettre à jour les serveurs DNS secondaires ne rencontrent pas toujours de restrictions selon les clients. En d’autres termes, chacun à la possibilité d’accéder à ces données sensibles qui sont retransmises. Il s’agit véritablement d’une mauvaise configuration des serveurs DNS. A cet effet, l’option permettant les appels récursifs est activée par défaut avec la version 8 de BIND. Par ailleurs, les administrateurs n’ont pas toujours le réflexe de modifier cette implémentation d’origine et dangereuse.</p>
+<p>   Un des moyens de résoudre le problème en attendant les correctifs de sécurité est de désactiver les appels récursifs sur le serveur DNS. Or, dans certains cas, ce n’est évidemment pas toujours possible, et pour cause : un serveur DNS doit fournir des indications à ses sous domaines.<br class="autobr">
+Néanmoins, il faut ajouter que dans les cas ou la suppression de la récursivité n’est pas possible, un contrôle strict des domaines autorisés à utiliser un serveur DNS principal de façon récursive peut permettre de limiter les risques d’attaque insidieuse. Il faut alors utiliser l’option [allow-recursion]. Ainsi, il n’est nullement obligatoire de servir les requêtes de transfert de n’importe qui.</p>
+<p>   Pour illustrer notre explication, nous allons justement examiner cette faiblesse au travers d’un exemple réel. Nous allons voir qu’un DNS mal configuré peut livrer trop d’informations et compromettre ainsi la confidentialité de certains fichiers (dans notre cas clients). Notre exemple se porte sur le portail spécialisé dans le jeu Formule FPS NoFrag.com (super site d’ailleurs !) A l’origine, je souhaitais louer les services de leur hébergement afin d’héberger un serveur Counter Strike ou Day Of Defeat. Avant cela, je voulais d’abord m’assurer du sérieux de leur administration et vérifier par moi-même l’intégrité de leurs produits. C’est peut être discutable comme initiative mais on n’achète pas toujours un produit tant que l’on a pas encore ouvert la boîte </p>
+<p>Pour débuter, effectuons un simple Whois pour informations de base sur le site suivant : <a href="http://www.whois.net" class="spip_url spip_out auto" rel="nofollow external">www.whois.net</a> | Mais qu’est-ce donc au juste ?<br class="autobr">
+Le Whois (de l’anglais « qui est-ce ? ») permet d’obtenir des informations légales et administratives des hébergements ainsi que des sites selon.</p>
+<p>Note : En vert figure les commentaires. En bleu les requêtes du client.</p>
+<div class="precode"><pre dir="ltr" style="text-align:left;"><code>[www.whois.net]
+Whois de DodFrance
+domain:                dodfrance.com
+owner-address:        DoD France
+owner-address:        99 Chemin Vert
+owner-address:        59300
+owner-address:        Aulnoy
+owner-address:        France
+admin-c:              DS479-GANDI
+tech-c:                DS479-GANDI
+bill-c:                DS479-GANDI
+nserver:              NS.BELOGIC.NET 81.91.66.208 &lt;&lt;&lt; Serveur DNS
+nserver:              NS.ST-AISE.COM 81.91.66.208 &lt;&lt;&lt; Serveur DNS
+reg_created:        2001-06-11 12:45:31
+expires:        2004-06-11 12:45:31
+created:        2001-06-11 18:45:31
+changed:        2003-05-24 21:54:21
+person:        Dubois Samuel
+nic-hdl:        DS479-GANDI
+address:        99 Chemin Vert
+address:        59300
+address:        Aulnoy
+address:        France
+phone:        06 16 44 47 00
+e-mail:        alternativ_fr@hotmail.com</code></pre></div>
+<p>Notre Whois nous donne deux adresses IP concernant les serveurs DNS du domaine Dodfrance.com, soit NS.BELOGIC.NET et NS.ST-AISE.COM (même IP). Pour tenter une migration des données relatives à ces DNS, nous utiliserons le programme nslookup (présent sur les distributions Unix et 2000NT) et qui sert justement à cet effet. C’est grâce à cette application que nous allons établir un contact client avec les serveurs DNS. Ajoutons brièvement qu’un serveur DNS utilise le protocole UDP (User Datagram Protocol) pour le passage des données.</p>
+<p>   Maintenant, passons aux choses sérieuses en demandant à notre IP 81.91.66.208 la version de BIND. Jusqu’à présent rien ne nous garanti qu’il se produira quelque chose de positif puisque normalement, nous devrions rencontrer une certaine restriction (si le serveur DNS est bien configuré). Et pourtant . . .</p>
+<div class="precode"><pre dir="ltr" style="text-align:left;"><code>Version DNS (81.91.66.208) nonerd.net 
+C:\&gt;nslookup
+Serveur par défaut : dnscache-1.proxad.net
+address: 212.27.39.1 Mon serveur DNS (@free)
+&gt; server 81.91.66.208
+Serveur par défaut : nonerd.net
+Address: 81.91.66.208
+Aliases: 208.66.91.81.in-addr.arpa
+&gt; set class=chaos
+&gt; set q=txt
+&gt; version.bind
+Serveur: nonerd.net
+Address: 81.91.66.208
+Aliases: 208.66.91.81.in-addr.arpa
+VERSION.BIND   text =
+       "8.3.6-REL" Voici la version!
+  Nous voici donc avec une version 8.3.6 de BIND. Vous remarquerez que nous obtenons aussi un nom de domaine autre sous l'éponyme nonerd.net 
+C'est maintenant que nous allons tenter (avec succès d'ailleurs) un transfert de zone DNS toujours avec nslookup. Voyons le résultat.
+&gt; ls -d nonerd.net 
+[nonerd.net]
+nonerd.net.                    SOA    nonerd.net root.nonerd.net. (3003103102 3600 900 604800 3600)
+nonerd.net.                    NS     nonerd.net                    
+nonerd.net.                    NS     ns6.gandi.net                 
+nonerd.net.                    A      81.91.66.208
+sql                            A      81.91.66.208
+yooz                           A      81.91.66.208
+*.yooz                         CNAME  yooz.nonerd.net
+timoti                         A      81.91.66.208
+*.timoti                       CNAME  timoti.nonerd.net
+gallery                        A      81.91.66.208
+*.gallery                      CNAME  gallery.nonerd.net
+home                           A      62.4.20.82
+comics                         A      62.4.20.82
+mail                           A      81.91.66.208
+www                            A      81.91.66.208
+arabd                          A      81.91.66.208
+*.arabd                        CNAME  arabd.nonerd.net
+ftp                            A      81.91.66.208
+nonerd.net.                    SOA    nonerd.net root.nonerd.net. (3003103102 3600 900 604800 3600)</code></pre></div>
+<p>Il y a certains aspects intéressants à cette petite impression sur écran, mais manifestement, les abréviations ne nous semble pas coutumières. A cet effet, prenons le temps de donner une claire explications des différentes abréviations rencontrées :</p>
+<p> SOA   - [Start Of Authority] décrit le DNS faisant référence ainsi que différentes valeurs indiquant la durée de validité des informations et l’adresse @mail du responsable de la zone.</p>
+<p> NS    - [Name Server] désigne les serveurs de noms pour la zone interrogée.</p>
+<p> A     - [Address] fait correspondre un nom (ou service) à une adresse IP. Dans notre log, nous trouvons notamment un serveur FTP (pure ftpd, vulnérable BOF), un service de messagerie, etc.</p>
+<p> CNAME - [Alias Name] Cette possibilité est particulièrement utilisée pour l’hébergement mutualisé lorsque plusieurs sites WEB sont hébergés sur le même serveur.</p>
+<p>   D’autres abréviations existent mais ne sont pas inscrites dans notre log d’exemple sur nonerd. Néanmoins, expliquons notamment MX qui correspond à un service de messagerie, PTR pour une correspondance entre une IP et une adresse, etc.</p>
+<p>   Il est intéressant de considérer la réponse via une requête de transfert sur le DNS ns6.gandi.net (d’ailleurs, la réponse correspond à une bonne configuration). Après, nous demanderons la version BIND du DNS secondaire.</p>
+<p>Request query sur ns6.gandi.net</p>
+<p>&gt; ls -d 80.67.173.196<br class="autobr">
+[ns6.gandi.net]<br class="autobr">
+*** Impossible de fournir la liste du domaine 80.67.173.196ÿ : Query refused</p>
+<p>C :&gt;nslookup<br class="autobr">
+Serveur par défaut : dnscache-1.proxad.net<br class="autobr">
+address : 212.27.39.1</p>
+<p>&gt; server 80.67.173.196<br class="autobr">
+Serveur par défaut : nonerd.net<br class="autobr">
+Address : 80.67.173.196</p>
+<p>&gt; set class=chaos<br class="autobr">
+&gt; set q=txt<br class="autobr">
+&gt; version.bind<br class="autobr">
+Serveur : ns6.gandi.net<br class="autobr">
+Address : 80.67.173.196</p>
+<p>VERSION.BIND   text =</p>
+<p>        "8.3.1-REL-NOESW"</p>
+<p>En finalité, nous avons donc plusieurs sites à visités (CNAME soit les aliases) sur notre IP [81.91.66.208]. Nous sommes en présence de 3 sites valides en partage sur le même serveur selon expression ’mutualisé’ :</p>
+<p>  1° <a href="http://gallery.nonerd.net" class="spip_url spip_out auto" rel="nofollow external">http://gallery.nonerd.net</a> [NoNerd Family Gallery]<br class="autobr">
+2° <a href="http://timoti.nonerd.net" class="spip_url spip_out auto" rel="nofollow external">http://timoti.nonerd.net</a>  [Etrange site sur l’art contemporain]<br class="autobr">
+3° <a href="http://yooz.nonerd.net" class="spip_url spip_out auto" rel="nofollow external">http://yooz.nonerd.net</a>    [Idem mais orienté Art plastique]</p>
+<p>   Bien que le transfert de zone ne soit pas explicitement responsable des différentes faiblesses de ce domaine, il accorde néanmoins une certaine transparence et donne une image plus précise de la cible. Le plus intéressant aurait été de placer une restriction afin de garantir l’opacité des susdites informations sensibles. Présentement, il y a là un moyen très simple de discerner si un site ou un serveur héberge éventuellement un script PHP vulnérable, un service ayant une faiblesse particulière ou d’autres choses encore.</p>
+<p>   Terminons cet examen en affirmant qu’après avoir été prévenu, l’administrateur consciencieux a prit les dispositions adéquats. Ainsi, les services de nonerd.net sont selon une attente légitime.</p>
+<p> l33t sk1llz ++</p>
+</div>
+</div>
+</div>
+</div>
+<div  class="small-12 columns"  >
+<div class="tile">
+<div class="t-body tb-padding"  >
+<a name='pagination_article_dates' id='pagination_article_dates'></a>
+<h4>
+<img src='IMG/rubon1.svg?1569923159' alt='Documentations publi&#233;es dans cette rubrique' class='vmiddle' style='max-width: 48px; max-height: 48px' />&nbsp;Documentations publiées dans cette rubrique
+</h4>
+<ul class="spip">
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-VoIP" title="Pr&#233;sentation VoIP">Présentation VoIP</a>
+<span class="gris">
+(dimanche 15 octobre 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Spoofing-DNS" title="Spoofing DNS">Spoofing DNS</a>
+<span class="gris">
+(mardi 28 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-IRC" title="Pr&#233;sentation IRC">Présentation IRC</a>
+<span class="gris">
+(mardi 28 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Commande-SCP" title="Commande SCP">Commande SCP</a>
+<span class="gris">
+(mardi 28 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/La-MIB" title="La MIB">La MIB</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-SNMP" title="Pr&#233;sentation SNMP">Présentation SNMP</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-IMAP" title="Pr&#233;sentation IMAP">Présentation IMAP</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-pop3-et-imap-par-TLS-avec-stunnel" title="S&#233;curiser pop3 et imap par TLS avec stunnel">Sécuriser pop3 et imap par TLS avec stunnel</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-Postfix" title="S&#233;curiser Postfix">Sécuriser Postfix</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-POP3" title="Pr&#233;sentation POP3">Présentation POP3</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-SMTP" title="Pr&#233;sentation SMTP">Présentation SMTP</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-Telnet" title="S&#233;curiser Telnet">Sécuriser Telnet</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-Telnet" title="Pr&#233;sentation Telnet">Présentation Telnet</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-proftpd" title="S&#233;curiser proftpd">Sécuriser proftpd</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-FTP" title="Presentation FTP">Presentation FTP</a>
+<span class="gris">
+(dimanche 26 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Hypertext-Transfer-Protocol" title="Hypertext Transfer Protocol">Hypertext Transfer Protocol</a>
+<span class="gris">
+(samedi 25 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-Apache" title="S&#233;curiser Apache ">Sécuriser Apache </a>
+<span class="gris">
+(samedi 25 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Presentation-SSH" title="Pr&#233;sentation SSH">Présentation SSH</a>
+<span class="gris">
+(dimanche 12 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securiser-un-serveur-de-nom" title="S&#233;curiser un serveur de nom">Sécuriser un serveur de nom</a>
+<span class="gris">
+(mardi 7 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Installation-d-un-serveur-DDNS-avec-bind-et-DHCP" title="Installation d&#039;un serveur DDNS avec bind et DHCP">Installation d&#8217;un serveur DDNS avec bind et DHCP</a>
+<span class="gris">
+(mardi 7 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/DHCP-Principe-et-Fonctionnement" title="DHCP : Principe et Fonctionnement">DHCP&nbsp;: Principe et Fonctionnement</a>
+<span class="gris">
+(mardi 7 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/DNS-principe-et-fonctionnement" title="DNS : principe et fonctionnement">DNS&nbsp;: principe et fonctionnement</a>
+<span class="gris">
+(lundi 6 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Securite-DNS" title="S&#233;curit&#233; DNS">Sécurité DNS</a>
+<span class="gris">
+(dimanche 5 février 2006
+par 
+<a class=" forum"  title="profil de Sphix" href="/Sphix?lang=fr">Sphix</a>
+)
+</span>
+</li>
+<li>
+<a href="fr/Documentation/Reseaux/Application/Faiblesse-des-serveurs-DNS-par-transfert-de-zone" title="Faiblesse des serveurs DNS par transfert de zone.">Faiblesse des serveurs DNS par transfert de zone.</a>
+<span class="gris">
+(mardi 17 janvier 2006
+par 
+<a class=" minirezo"  title="profil de g0uZ" href="/g0uZ?lang=fr">g0uZ</a>
+)
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><!--ajaxbloc-->            </main>
+<footer id="footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+<div class="text-center">
+<div class="columns small-12">
+<img src="IMG/siteon0.svg?1574327304" class="vmiddle grayscale" alt="Root-Me" width="48" height="48"/>
+</div>
+<div class="columns small-12">
+<a class="gris2" title="Confidentialité" href="https://www.root-me.org?page=structure&amp;inc=page-confidentialite&amp;lang=fr">Confidentialité</a>
+&nbsp;|&nbsp;
+<a class="gris2" title="Mentions Légales"  href="https://www.root-me.org/fr/Informations/Infos-Legales/">Mentions Légales</a>
+&nbsp;|&nbsp;
+<a class="gris2" title="Conditions Générales d'Utilisation" href="https://www.root-me.org?page=structure&amp;inc=page-CGU&amp;lang=fr">Conditions Générales d'Utilisation</a><br/>
+Root Me&nbsp;: plateforme d&#8217;apprentissage dédiée au Hacking et à la Sécurité de l&#8217;Information<br/>
+©&nbsp;2010&nbsp;-&nbsp;2021<br/>
+<hr/>
+</div>
+</div>
+<div class="text-center">
+<div class="small-10 large-3 small-centered columns">
+<div class="small-3 columns"><a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fwww.root-me.org%2F&region=follow_link&screen_name=rootme_org&tw_p=followbutton" title="Twitter"><img src='squelettes/img/twitter.svg?1573023931' alt='Twitter' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+<div class="small-3 columns"><a href="https://www.linkedin.com/groups/Root-Me-hacking-and-information-8180601" title="Linkedin"><img src='squelettes/img/linkedin.svg?1573023925' alt='Linkedin' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>                
+<div class="small-3 columns"><a href="https://www.root-me.org?page=flux_rss&amp;lang=fr" title="Flux Dynamique"><img src='squelettes/img/rss.svg?1573023935' alt='Flux Dynamique' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+<div class="small-3 columns"><a href="https://facebook.com/" title="Facebook"><img src='squelettes/img/facebook.svg?1573024094' alt='Facebook' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+</div>
+</div>
+</footer>        </div>
+</div>
+</div>
+</body>
+</html>
