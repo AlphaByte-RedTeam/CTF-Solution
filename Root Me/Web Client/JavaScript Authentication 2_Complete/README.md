@@ -41,6 +41,8 @@ function connexion(){
     }
 }
 ```
+Login: GOD </br>
+Password: HIDDEN </br>
 
 ## Step 3
 The password is in uppercase </br>
