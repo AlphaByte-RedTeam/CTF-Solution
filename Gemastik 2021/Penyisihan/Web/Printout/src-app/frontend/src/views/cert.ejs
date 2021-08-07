@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/template.css" rel="stylesheet">
+    <title>Certificate of Participation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            color: black;
+            display: table;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            text-align: center;
+        }
+        .container {
+            border: 20px solid rgb(3, 3, 34);
+            width: 1043px;
+            height: 715px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .logo {
+            color: rgb(8, 5, 1);
+        }
+
+        .marquee {
+            color: rgb(211, 209, 206);
+            font-size: 48px;
+            margin: 20px;
+        }
+        .assignment {
+            margin: 20px;
+        }
+        .person {
+            border-bottom: 2px solid black;
+            font-size: 32px;
+            font-style: italic;
+            margin: 20px auto;
+            width: 400px;
+        }
+        .reason {
+            margin: 20px;
+        }
+        .date {
+            margin: 30px;
+        }
+        @page{
+            size: A4 landscape;
+            margin:5mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="marquee">
+            CERTIFICATE OF PARTICIPATION
+        </div>
+
+        <div class="assignment">
+            This certificate is presented to
+        </div>
+
+        <div class="person">
+            <%= name %>
+        </div>
+
+        <div class="reason">
+            For participating in <br>
+            GEMASTIK IV qualification
+        </div>
+        <div class="date">
+            August 7, 2021
+        </div>
+    </div>
+</body>
+</html>

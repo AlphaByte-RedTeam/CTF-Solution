@@ -1,0 +1,25 @@
+#!/usr/bin/env python3.8
+
+from utils import Trash
+
+import os
+
+recycle_dir = '/tmp/Trash'
+project_dir = os.path.join(os.getcwd(), '.git')
+
+def lists(path, exclude=[]):
+    result = []
+
+    for r, d, f in os.walk(path):
+        for _ in f:
+            if _ in exclude:
+                continue
+
+            abspath = os.path.join(r, _)
+            result.append(abspath)
+
+    return result
+
+for file_path in lists(project_dir):
+    trash = Trash(file_path, recycle_dir)
+    trash.delete()
