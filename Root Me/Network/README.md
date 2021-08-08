@@ -9,3 +9,4 @@
 | 5	 | [Bluetooth - Unknown file](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Network/Bluetooth%20-%20Unknown%20file_Complete) | `Moderate` |
 | 6	 | [CISCO - Password](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Network/CISCO%20-%20Password_Complete) | `Moderate` |
 | 7  | [IP-Time to Live](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Network/IP-Time%20to%20live_Complete) | `Moderate` |
+| 8  | [CISCO - Password](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Network/CISCO%20-%20Password_Complete) | `Moderate` |
