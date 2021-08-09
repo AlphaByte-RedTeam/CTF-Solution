@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Luas Permukaan</title>
+</head>
+<?php
+ini_set("display_errors", true);
+
+if (!isset($_GET["l"]) && !isset($_GET["t"]) && !isset($_GET["sisi"]) && !isset($_GET["name"])) {
+    show_source(__FILE__);
+    die();
+}
+
+$total = 0;
+for ($i = 0; $i < $_GET["sisi"]; $i++) {
+    $total += $_GET["l"] * $_GET["t"];
+}
+
+header("Content-Security-Policy: default-src 'none';");
+
+$name = $_GET["name"];
+echo "Result for $name is $total";
+?>
+</html>
