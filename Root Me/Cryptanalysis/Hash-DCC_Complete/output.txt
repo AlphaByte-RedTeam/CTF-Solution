@@ -1,0 +1,57 @@
+hashcat (v6.1.1) starting...
+
+You have enabled --force to bypass dangerous warnings and errors!
+This can hide serious problems and should only be done when debugging.
+Do not report hashcat issues encountered when using --force.
+OpenCL API (OpenCL 1.2 pocl 1.6, None+Asserts, LLVM 9.0.1, RELOC, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+=============================================================================================================================
+* Device #1: pthread-Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz, 5843/5907 MB (2048 MB allocatable), 6MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 27
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Applicable optimizers applied:
+* Optimized-Kernel
+* Zero-Byte
+* Precompute-Init
+* Early-Skip
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+Host memory required for this attack: 65 MB
+
+Dictionary cache built:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344392
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+* Runtime...: 1 sec
+
+15a57c279ebdfea574ad1ff91eb6ef0c:administrator:ilikethat
+                                                 
+Session..........: hashcat
+Status...........: Cracked
+Hash.Name........: Domain Cached Credentials (DCC), MS Cache
+Hash.Target......: 15a57c279ebdfea574ad1ff91eb6ef0c:administrator
+Time.Started.....: Fri Sep  3 12:37:11 2021, (0 secs)
+Time.Estimated...: Fri Sep  3 12:37:11 2021, (0 secs)
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  2400.6 kH/s (1.07ms) @ Accel:1024 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 153601/14344385 (1.07%)
+Rejected.........: 1/153601 (0.00%)
+Restore.Point....: 147457/14344385 (1.03%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidates.#1....: mckenzy -> 130304
+
+Started: Fri Sep  3 12:36:52 2021
+Stopped: Fri Sep  3 12:37:13 2021

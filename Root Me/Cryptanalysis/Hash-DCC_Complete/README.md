@@ -47,7 +47,7 @@ ELITE\CHOUPAPI:Mdp!1256@
 service_user:Mdp!1256@
 [*] Cleaning up...
 ```
-Save this `15a57c279ebdfea574ad1ff91eb6ef0c:Administrator` as hash.txt </br>
+Save this `15a57c279ebdfea574ad1ff91eb6ef0c:administrator` as hash.txt </br>
 
 ## Step 2
 Decrypt the hash using Hashcat by run the following command `hashcat -m 1100 hash.txt /usr/share/wordlists/rockyou.txt --force -O` </br>
