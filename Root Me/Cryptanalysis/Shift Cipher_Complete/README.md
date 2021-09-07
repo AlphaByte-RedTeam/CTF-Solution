@@ -28,4 +28,4 @@ while 1 < 100:
 ```
 
 ## Step 3
-Run the python script by running this command `python2 fileName.py > output.txt && cat output.txt` </br>
+Run the python script by running this command `python2 fileName.py > output.txt` </br>
