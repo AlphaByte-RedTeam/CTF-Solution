@@ -8,3 +8,4 @@
 | 4	 | [Hash-DCC2](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-DCC2_Complete) | `Easy` |
 | 5	 | [Hash-LM](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-LM_Complete) | `Easy` |
 | 6 	 | [Hash-Message Digest 5](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-Message%20Digest%205_Complete) | `Easy` |
+| 7 	 | [Hash-NT](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-NT_Complete) | `Easy` |
