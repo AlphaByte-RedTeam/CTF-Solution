@@ -9,3 +9,5 @@
 | 5	 | [Hash-LM](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-LM_Complete) | `Easy` |
 | 6 	 | [Hash-Message Digest 5](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-Message%20Digest%205_Complete) | `Easy` |
 | 7 	 | [Hash-NT](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-NT_Complete) | `Easy` |
+| 8	 | [Hash-SHA2](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-SHA2_Complete) | `Easy` |
+| 9	 | [Shift Cipher](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Shift%20Cipher_Complete) | `Moderate` |
