@@ -1,0 +1,1060 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en" xml:lang="en">
+<head>
+<base href="https://www.root-me.org/" />
+<title>Tools/Forensic : volatility [Root Me : Hacking and Information Security learning platform]</title>
+<meta name="keywords" content="Tools,Forensic,volatility"/>
+<meta name="author" content=""/>
+<link rel="alternate" type="application/rss+xml" title="RSS [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS (breves) [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-breves&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS Forum [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-forums&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS challenges [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-challenges&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS solutions [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-solutions&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS CTF all the day [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-ctfalltheday&amp;lang=en" />
+<link rel="alternate" type="application/rss+xml" title="RSS CTF calendar [Root Me : Hacking and Information Security learning platform]" href="https://www.root-me.org?page=backend-ctf&amp;lang=en" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />            
+<link rel='stylesheet' href='local/cache-css/bd8cddd60fca745953455c8bc36229be.css?1630492074' type='text/css' />    
+<script type="text/javascript">/* <![CDATA[ */
+var box_settings = {tt_img:true,sel_g:"#documents_portfolio a[type=\'image/jpeg\'],#documents_portfolio a[type=\'image/png\'],#documents_portfolio a[type=\'image/gif\']",sel_c:".mediabox, .popin",trans:"elastic",speed:"100",ssSpeed:"2500",maxW:"90%",maxH:"90%",minW:"400px",minH:"",opa:"0.8",str_ssStart:"Slideshow",str_ssStop:"Stop",str_cur:"{current}/{total}",str_prev:"Previous",str_next:"Next",str_close:"Close",splash_url:""};
+var box_settings_splash_width = "600px";
+var box_settings_splash_height = "90%";
+var box_settings_iframe = true;
+/* ]]> */</script>
+<!-- insert_head_css -->
+<script type='text/javascript'>
+var jQl={q:[],dq:[],gs:[],ready:function(a){"function"==typeof a&&jQl.q.push(a);return jQl},getScript:function(a,c){jQl.gs.push([a,c])},unq:function(){for(var a=0;a<jQl.q.length;a++)jQl.q[a]();jQl.q=[]},ungs:function(){for(var a=0;a<jQl.gs.length;a++)jQuery.getScript(jQl.gs[a][0],jQl.gs[a][1]);jQl.gs=[]},bId:null,boot:function(a){"undefined"==typeof window.jQuery.fn?jQl.bId||(jQl.bId=setInterval(function(){jQl.boot(a)},25)):(jQl.bId&&clearInterval(jQl.bId),jQl.bId=0,jQl.unqjQdep(),jQl.ungs(),jQuery(jQl.unq()), "function"==typeof a&&a())},booted:function(){return 0===jQl.bId},loadjQ:function(a,c){setTimeout(function(){var b=document.createElement("script");b.src=a;document.getElementsByTagName("head")[0].appendChild(b)},1);jQl.boot(c)},loadjQdep:function(a){jQl.loadxhr(a,jQl.qdep)},qdep:function(a){a&&("undefined"!==typeof window.jQuery.fn&&!jQl.dq.length?jQl.rs(a):jQl.dq.push(a))},unqjQdep:function(){if("undefined"==typeof window.jQuery.fn)setTimeout(jQl.unqjQdep,50);else{for(var a=0;a<jQl.dq.length;a++)jQl.rs(jQl.dq[a]); jQl.dq=[]}},rs:function(a){var c=document.createElement("script");document.getElementsByTagName("head")[0].appendChild(c);c.text=a},loadxhr:function(a,c){var b;b=jQl.getxo();b.onreadystatechange=function(){4!=b.readyState||200!=b.status||c(b.responseText,a)};try{b.open("GET",a,!0),b.send("")}catch(d){}},getxo:function(){var a=!1;try{a=new XMLHttpRequest}catch(c){for(var b=["MSXML2.XMLHTTP.5.0","MSXML2.XMLHTTP.4.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP"],d=0;d<b.length;++d){try{a= new ActiveXObject(b[d])}catch(e){continue}break}}finally{return a}}};if("undefined"==typeof window.jQuery){var $=jQl.ready,jQuery=$;$.getScript=jQl.getScript};
+jQl.loadjQ('local/cache-js/a4bc60c232c86e9a088a5b08b2b5975e.js?1630262043')
+</script>
+<!-- insert_head -->
+<script type="text/javascript">jQl.loadjQ("https://www.root-me.org/local/cache-js/jsdyn-script_onload_js-379ccebd.js?1629353295");</script>
+<link rel="icon" type="image/x-icon" href="https://www.root-me.org/squelettes/img/rblack.ico" />
+<link rel="icon" type="image/png" href="https://www.root-me.org/squelettes/img/rblackGrand32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.root-me.org/squelettes/img/rblackGrand16.png" sizes="16x16" />   
+</head>
+<body class="antialiased hide-extras" dir="ltr" itemscope itemtype="https://schema.org/WebPage">
+<header id="header" role="banner">
+<nav class="top-bar" data-topbar>
+<ul class="title-area" itemprop="isPartOf" itemscope itemtype="https://schema.org/WebSite">
+<li class="name">
+<a itemprop="url" href="https://www.root-me.org?lang=en" title="challenge your hacking skills" target="_top">
+<img width="48" height="48" class="show-for-medium-up vmiddle invert" alt="logo https://www.root-me.org" src="IMG/siteon0.svg?1574327304" itemprop="image"  />
+<img width="48" height="48" class="show-for-small-only toggleSidebar vmiddle" alt="logo https://www.root-me.org" src="IMG/siteon0.svg?1574327304" itemprop="image" />
+<span class="show-for-large-up blanc" itemprop="name">Root&nbsp;Me</span>
+</a>
+</li>    
+</ul>
+<section class="top-bar-section">
+<ul class="right">    
+<li class="lang">
+<span>
+<span>
+</span>
+<a href="/en/Tools/Forensic/volatility#"><img width="16" height="16" src="squelettes/img/drap_en.svg" alt="en" class="grayscale" title="in"/></a>
+</span>
+</li>
+<li>
+<a style="height: 24px; padding: 10px 10px 0 10px;" class="mediabox pageajax boxHeight-500px" href="./?page=identifiants&amp;lang=en" title="Create an account"><img src="squelettes/img/register.svg" height="16" width="16"  class="vtop"/></a>
+<a style="height: 24px; padding: 15px 10px 0 10px;" class="mediabox pageajax boxHeight-390px" href="./?page=login&amp;lang=en" title="Connect"><img src="squelettes/img/login.svg" height="16" width="16"  class="vtop"/></a>
+</li>            </ul>   
+<ul class="left">
+<li class="hide-for-small-only"><a title="Frequently Asked Questions" href="https://www.root-me.org?page=faq&amp;lang=en"><img src='squelettes/img/faq_nb.svg?1566640929' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="Site Map" href="https://www.root-me.org?page=plan&amp;lang=en"><img src='squelettes/img/plan_nb.svg?1566640893' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="Contact" href="https://www.root-me.org?page=contact&amp;lang=en"><img src='squelettes/img/contact_nb.svg?1566640717' style='max-width: 32px; max-height: 32px' /></a></li>
+<li class="hide-for-small-only"><a title="Services state" href="https://www.root-me.org?page=structure&amp;inc=inclusions%2Fservices&amp;lang=en"><img src="squelettes/img/service_state_nb.svg" width="32" height="32"/></a></li>
+<li class="hide-for-small-only"><a title="Shop" href="https://www.root-me.org?page=structure&amp;inc=page-shop&amp;lang=en"><img src="squelettes/img/shop_nb.svg" width="32" height="32"/></a></li>            
+<li class="search">
+<form action="https://www.root-me.org" method="get">
+<input type="hidden" value="recherche" name="page"/>
+<input type="hidden" value="en" name="lang" />                    
+<input class="search" name="recherche" placeholder="Search" minlength="3" type="search" />                        
+</form>
+</li>
+</ul>
+</section>
+</nav>
+</header>
+<div id="container">
+<div id="main_row">
+<div id="aside_wrapper">
+<aside id="aside" role="complementary" itemscope itemtype="https://schema.org/WPSideBar">
+<nav class="top-bar" data-topbar="" >
+<div class="top-bar-section" role="navigation" itemprop="hasPart" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<ul class="right">
+<li class="has-dropdown">
+<a itemprop="url" href="en/Capture-The-Flag/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon190.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Capture The Flag</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Capture The Flag</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Capture-The-Flag/Calendar/" title="The CTF calendar is coming soon. Don&#039;t hesitate to inform us about those we forgot by sending a message on the Contact page! "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon198.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Calendar
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Capture-The-Flag/CTF-all-the-day/" title="Improve your hacking skills in a realistic environment where the goal is to fully compromise, &#171; root &#187; the host !"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon197.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+CTF all the day
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="en/Challenges/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon148.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Challenges</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Challenges</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/App-Script/" title="Exploit environment weaknesses, configuration mistakes and vulnerability patterns in scripts and systems."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon191.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+App - Script
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/App-System/" title="These challenges will help you understand applicative vulnerabilities."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon204.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+App - System
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Cracking/" title="Reverse binaries and crack executables."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon158.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cracking
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Cryptanalysis/" title="Break encryption algorithms"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon160.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cryptanalysis
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Forensic/" title="Train digital investigation skills by analyzing memory dumps, log files, network captures..."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon209.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Forensic
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Network/" title="Investigate captured traffic, network services and perform packet analysis"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon183.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Network
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Programming/" title="Automate tasks and build shellcodes."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon159.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Programming
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Realist/" title="Realistic challenges."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon157.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Realist
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Steganography/" title="The art of hiding information in a document. "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon156.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Steganography
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Web-Client/" title="Client-side technologies implemented in the web browser"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon155.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web - Client
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Challenges/Web-Server/" title="Discover the mechanisms, protocols and technologies used on the Internet and learn to abuse them!"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon154.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web - Server
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="en/Community/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon152.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Community</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Community</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/Contribute/" title="You have computer security or hacking skills? Join us and help grow the community! Don&#039;t hesitate ;-)"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon176.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Contribute
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/Discord-server/" title="Informations about the Discord server."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon181.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Discord server
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/Forums/" title="A space for you to share, interact with other members of the community."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon142.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Forums
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/IRC-channel/" title="IRC channel information page"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon192.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+IRC channel
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/Rankings/" title="Rankings and explanation about challenges and scores"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon166.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Rankings
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Community/ShoutBox/" title="Leave us a message"  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon165.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+ShoutBox
+</a>
+</li>
+</ul>
+</li>
+<li class="">
+<a itemprop="url" href="en/Docs/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon149.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Docs</span>
+</a>
+</li>
+<li class="has-dropdown">
+<a itemprop="url" href="en/Information/">
+<span class="logo left">
+<img  class="grayscale grayscale_hoveroff" src="IMG/rubon151.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Information</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Information</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Information/Hacks/" title="As on any information system, some weaknesses were identified on the website."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon171.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Hacks
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Information/Legal-Disclaimer/" title="In a world so wide as hacking, which deals with many controversial areas, it became necessary to warn the user about portal&#039;s usage and its services."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon168.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Legal Disclaimer
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Information/Partners/" title="We are currently searching for partners. If you&#039;re interested mail : admin - At - root-me.org. "  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon169.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Partners
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Information/Sponsors/" title="Sponsors helping us to maintain this architecture and this portal."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon202.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Sponsors
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Information/The-foundation/" title="Root-Me is a non-profit organization which goal is to promote the spread of knowledge related to hacking and information security."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon167.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+The foundation
+</a>
+</li>
+</ul>
+</li>
+<li class="has-dropdown active">
+<a itemprop="url" href="en/Tools/">
+<span class="logo left">
+<img  src="IMG/rubon150.svg?1569923159" width="16px" height="16px" alt="0x0"/>
+</span>
+<span class="hide-for-medium-only">Tools</span>
+</a>
+<ul class="dropdown">
+<li class="show-for-medium-only first">Tools</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Cryptography/" title="Everything you need in the crypto domain."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Cryptography
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Forensic/" title="Most famous and useful tools in Forensic analysis."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Forensic
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Network/" title="Most used tools for network analysis and attack."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Network
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Online-Tools/" title="Several tools are available online : password generator, crypt, whois..."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Online Tools
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Reverse-Engineering/" title="Reversing tools to help you in your binary analysis : debugger, disassembler, managed code decompiler, etc."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Reverse Engineering
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/System/" title="Everything you need to assess and exploit system vulnerability."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+System
+</a>
+</li>
+<li class="hide-for-small-only">
+<a class="smenu" href="en/Tools/Web/" title="Common web oriented tools which can be helpfull in various challenges."  itemprop="url">
+<img class='vmiddle grayscale grayscale_hoveroff' alt="" src="IMG/rubon150.svg?1569923159" style='max-width: 16px; max-height: 16px' />
+Web
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div class="small-12 columns hide-for-medium-only">
+<h3>91 visitors now</h3>
+Newest members&nbsp;:
+<ul class="inline-list ts">
+<li><a class=" forum"  title="profil of alya" href="/alya-607977?lang=en">alya</a></li>
+<li><a class=" forum"  title="profil of Matthew Klaczak" href="/Matthew-Klaczak?lang=en">Matthew Klaczak</a></li>
+<li><a class=" forum"  title="profil of paitok" href="/paitok?lang=en">paitok</a></li>
+<li><a class=" forum"  title="profil of Britney Aracelly Arratia Gonzales" href="/Britney-Aracelly-Arratia-Gonzales?lang=en">Britney Aracelly Arratia Gonzales</a></li>
+<li><a class=" forum"  title="profil of Sossodlain" href="/Sossodlain?lang=en">Sossodlain</a></li>
+<li><a class=" forum"  title="profil of anaspdp" href="/anaspdp?lang=en">anaspdp</a></li>
+<li><a class=" forum"  title="profil of jhasmin" href="/jhasmin?lang=en">jhasmin</a></li>
+</ul>     
+<h3>Chatbox</h3>
+<div class='ajaxbloc ajax-id-chat_box_mini' data-ajax-env='8a5OWKaKObHhHlY5IRT5XL55wo8Sgw7I5tNo5WGGktQXoD8IZH01XkdrhHtq4IvQLh8IQgqU34uw/nF5yBjPEOs1o/tLE8ECvQVhxJmoAHQdtqLIcq9BxdmGOts/52Y4Fo4tZ5t5kHe1iOdfhYtI8nh3rKyigR+aat8lhEfTA4Sh7B7c5v5I93kL9/jXFPPzHSLHCKvMiBTghA==' data-origin="/en/Tools/Forensic/volatility">
+<a name='pagination_chat_box_archive' id='pagination_chat_box_archive'></a>
+<ul>
+<li>
+<span class="left"><img class="vmiddle logo_auteur logo_6forum" width="31" height="48" src="IMG/auton240831.jpg?1630626595" alt="h2s"  /></span>
+<span class="left" style="margin-left: 0.5rem;">
+<a class=" forum"  title="profil of h2s" href="/H2S-240831?lang=en">h2s</a><br/>
+<i class="txs left">1 September 2021&nbsp;at&nbsp;17:37</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-left"><p>Hello, I am on LaTeX - Input challenge, and I delete a /tmp/main.tex file... How can I restore it ? Thxalot</p></div>
+</li>
+<li>
+<span class="right"><img class="vmiddle logo_auteur logo_6forum" width="48" height="48" src="IMG/auton0.png?1574278497" alt="szdiof"  /></span>
+<span class="text-right right" style="margin-right: 0.5rem;">
+<a class=" forum"  title="profil of szdiof" href="/szdiof?lang=en">szdiof</a><br/>
+<i class="txs text-right">31 August 2021&nbsp;at&nbsp;08:07</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-right"><p>hello,I’m new here, can any one help me on how to validate a challenge</p></div>
+</li>
+<li>
+<span class="left"><img class="vmiddle logo_auteur logo_6forum" width="48" height="27" src="IMG/auton603692.jpg?1629787233" alt="&#38;#120017;&#38;#120042;&#38;#120043;&#38;#120042; &#38;#120040;&#38;#120042;&#38;#120048;&#38;#120042;"  /></span>
+<span class="left" style="margin-left: 0.5rem;">
+<a class=" forum"  title="profil of &#38;#120017;&#38;#120042;&#38;#120043;&#38;#120042; &#38;#120040;&#38;#120042;&#38;#120048;&#38;#120042;" href="/Baba-Yaga-603692?lang=en">&#120017;&#120042;&#120043;&#120042; &#120040;&#120042;&#120048;&#120042;</a><br/>
+<i class="txs left">26 August 2021&nbsp;at&nbsp;13:17</i>
+</span>
+<div class="clearfix"></div>                
+<div class="chatbox txs text-left"><p>Bonjour il faut que vous alliez voir la FAQ ! Vous trouverez les réponses que vous avez besoin.<br class="autobr">
+Bon courage <br class="autobr">
+<a href="https://www.root-me.org/?page=faq&amp;lang=fr" class="spip_url auto" rel="nofollow">https://www.root-me.org/?page=faq&amp;lang=fr</a></p></div>
+</li>
+</ul>
+<div class="pagination-centered">
+<ul class="pagination">
+<li><a href='/en/Tools/Forensic/volatility?debut_chat_box_archive=3#pagination_chat_box_archive' class='lien_pagination gris' rel='nofollow'>&gt;</a></li>
+</ul>
+</div>
+</div><!--ajaxbloc-->
+<span>            
+<a href="./?page=chatbox_message&amp;lang=en" title="Post a message" class="gris mediabox pageajax"><img src='squelettes/img/post.png' alt='' width='32' height='32' />&nbsp;Post a message</a><br/>
+<a class="gris" href="/en/Tools/Forensic/volatility" title="Refresh" onclick="ajaxReload('chat_box_mini'); return false;"><img src='squelettes/img/refresh.png' alt='' width='32' height='32' />&nbsp;Refresh</a>                
+</span>
+<div class="clearfix"></div>            <h3>Sponsored by</h3>
+<ul>
+<li><a href="https://www.ensta-bretagne.fr/en" target="_BLANK" >ENSTA Bretagne</a></li>
+<li><a href="https://public.geoide.fr" target="_BLANK" >GEOIDE</a></li>
+<li><a href="https://www.synacktiv.com" target="_BLANK" >Synacktiv</a></li>
+<li><a href="https://www.nbs-system.com" target="_BLANK" >NBS System</a></li>
+<li><a href="http://www.provadys.com" target="_BLANK" >Provadys</a></li>
+<li><a class="mediabox pageajax" href="./?page=structure&amp;inc=page-don&amp;lang=en">You&nbsp;;-)</a></li>
+</ul>        </div>
+</aside>
+</div>        <div id="main_wrapper" class="row">
+<ul id="breadcrumb" class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a href="https://www.root-me.org?lang=en" title="Home" itemprop="item"><span itemprop="name">Home</span></a>
+<meta itemprop="position" content="1">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a title="Tools" href="https://www.root-me.org/en/Tools/" itemprop="item"><span itemprop="name">Tools</span></a>
+<meta itemprop="position" content="2">
+</li>
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a title="Forensic" href="https://www.root-me.org/en/Tools/Forensic/" itemprop="item"><span itemprop="name">Forensic</span></a>
+<meta itemprop="position" content="3">
+</li>
+</ul>        
+<main id="main" itemprop="mainEntity" itemscope itemtype="https://schema.org/Article">
+<div class='ajaxbloc' data-ajax-env='Oa/EXKeaJbFxmZqkAX2SgACvZk8mMtVyzxBemt7ysDvA4E0/PniAqHq82twnhWoeMrsEqZ0OG9/BbwrUR1FbaoSdCIX6hfrby1HNSvU6RLtcgKfSjn9Ue2Dm2+Om27DNpuLemS76rPTwC/sJEv/Jq5CilFoC4r8AAOjRcwEwPlMOdl7VE6ZxXyWMQdRuCQCfjYJOVAJyEYiryGNBbdL/W6uYCm+fn5gcZVg=' data-origin="/en/Tools/Forensic/volatility">
+<div  class="small-12 columns"  >
+<div class="tile">
+<div class="t-body tb-padding"  >
+<div class="row">
+<div class="large-12 columns">
+<span class="right"><a class="button tiny" href="https://api.github.com/repos/volatilityfoundation/volatility/zipball">&darr; download on github</a></span>
+<div class="texte crayon article-texte-921 " itemprop="text">
+<h1>============================================================================
+Volatility Framework - Volatile memory extraction utility framework</h1>
+<p>The Volatility Framework is a completely open collection of tools,
+implemented in Python under the GNU General Public License, for the
+extraction of digital artifacts from volatile memory (RAM) samples.
+The extraction techniques are performed completely independent of the
+system being investigated but offer visibilty into the runtime state
+of the system. The framework is intended to introduce people to the
+techniques and complexities associated with extracting digital artifacts
+from volatile memory samples and provide a platform for further work into
+this exciting area of research.</p>
+<p>The Volatility distribution is available from: 
+<a href="http://www.volatilityfoundation.org/#!releases/component_71401" class="spip_url spip_out auto" rel="nofollow external">http://www.volatilityfoundation.org/#!releases/component_71401</a></p>
+<p>Volatility should run on any platform that supports 
+Python (<a href="http://www.python.org" class="spip_url spip_out auto" rel="nofollow external">http://www.python.org</a>)</p>
+<p>Volatility supports investigations of the following memory images:</p>
+<p>Windows:</p>
+<ul class="spip">
+<li>32-bit Windows XP Service Pack 2 and 3</li>
+<li>32-bit Windows 2003 Server Service Pack 0, 1, 2</li>
+<li>32-bit Windows Vista Service Pack 0, 1, 2</li>
+<li>32-bit Windows 2008 Server Service Pack 1, 2 (there is no SP0)</li>
+<li>32-bit Windows 7 Service Pack 0, 1</li>
+<li>32-bit Windows 8, 8.1, and 8.1 Update 1</li>
+<li>32-bit Windows 10 (initial support)</li>
+<li>64-bit Windows XP Service Pack 1 and 2 (there is no SP0)</li>
+<li>64-bit Windows 2003 Server Service Pack 1 and 2 (there is no SP0)</li>
+<li>64-bit Windows Vista Service Pack 0, 1, 2</li>
+<li>64-bit Windows 2008 Server Service Pack 1 and 2 (there is no SP0)</li>
+<li>64-bit Windows 2008 R2 Server Service Pack 0 and 1</li>
+<li>64-bit Windows 7 Service Pack 0 and 1</li>
+<li>64-bit Windows 8, 8.1, and 8.1 Update 1</li>
+<li>64-bit Windows Server 2012 and 2012 R2 </li>
+<li>64-bit Windows 10 (including at least 10.0.19041)</li>
+<li>64-bit Windows Server 2016 (including at least 10.0.19041)</li>
+</ul>
+<p>Note: Please see the guidelines at the following link for notes on 
+compatibility with recently patched Windows 7 (or later) memory samples:</p>
+<pre><code>https://github.com/volatilityfoundation/volatility/wiki/2.6-Win-Profiles</code></pre>
+<p>Linux: </p>
+<ul class="spip">
+<li>32-bit Linux kernels 2.6.11 to 5.5</li>
+<li>64-bit Linux kernels 2.6.11 to 5.5</li>
+<li>OpenSuSE, Ubuntu, Debian, CentOS, Fedora, Mandriva, etc</li>
+</ul>
+<p>Mac OSX:</p>
+<ul class="spip">
+<li>32-bit 10.5.x Leopard (the only 64-bit 10.5 is Server, which isn’t supported)</li>
+<li>32-bit 10.6.x Snow Leopard</li>
+<li>64-bit 10.6.x Snow Leopard</li>
+<li>32-bit 10.7.x Lion</li>
+<li>64-bit 10.7.x Lion</li>
+<li>64-bit 10.8.x Mountain Lion (there is no 32-bit version)</li>
+<li>64-bit 10.9.x Mavericks (there is no 32-bit version)</li>
+<li>64-bit 10.10.x Yosemite (there is no 32-bit version)</li>
+<li>64-bit 10.11.x El Capitan (there is no 32-bit version)</li>
+<li>64-bit 10.12.x Sierra (there is no 32-bit version)</li>
+<li>64-bit 10.13.x High Sierra (there is no 32-bit version))</li>
+<li>64-bit 10.14.x Mojave (there is no 32-bit version)</li>
+<li>64-bit 10.15.x Catalina (there is no 32-bit version)</li>
+</ul>
+<p>Volatility does not provide memory sample acquisition
+capabilities. For acquisition, there are both free and commercial
+solutions available. If you would like suggestions about suitable 
+acquisition solutions, please contact us at:</p>
+<p>volatility (at) volatilityfoundation (dot) org</p>
+<p>Volatility supports a variety of sample file formats and the
+ability to convert between these formats:</p>
+<ul class="spip">
+<li>Raw linear sample (dd)</li>
+<li>Hibernation file (from Windows 7 and earlier)</li>
+<li>Crash dump file</li>
+<li>VirtualBox ELF64 core dump</li>
+<li>VMware saved state and snapshot files</li>
+<li>EWF format (E01) </li>
+<li>LiME format</li>
+<li>Mach-O file format</li>
+<li>QEMU virtual machine dumps</li>
+<li>Firewire </li>
+<li>HPAK (FDPro)</li>
+</ul>
+<p>For a more detailed list of capabilities, see the following:</p>
+<pre><code>https://github.com/volatilityfoundation/volatility/wiki</code></pre>
+<p>Also see the community plugins repository:</p>
+<pre><code>https://github.com/volatilityfoundation/community</code></pre>
+<h1>Example Data</h1>
+<p>If you want to give Volatility a try, you can download exemplar
+memory images from the following url:</p>
+<pre><code>https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples</code></pre>
+<h1>Mailing Lists</h1>
+<p>Mailing lists to support the users and developers of Volatility
+can be found at the following address:</p>
+<pre><code>http://lists.volatilesystems.com/mailman/listinfo</code></pre>
+<h1>Contact</h1>
+<p>For information or requests, contact:</p>
+<p>Volatility Foundation</p>
+<p>Web: <a href="http://www.volatilityfoundation.org" class="spip_url spip_out auto" rel="nofollow external">http://www.volatilityfoundation.org</a>
+<a href="http://volatility-labs.blogspot.com">http://volatility-labs.blogspot.com</a>
+<a href="http://volatility.tumblr.com">http://volatility.tumblr.com</a></p>
+<p>Email: volatility (at) volatilityfoundation (dot) org</p>
+<p>IRC: #volatility on freenode</p>
+<p>Twitter: @volatility </p>
+<h1>Requirements</h1>
+<ul class="spip">
+<li>Python 2.6 or later, but not 3.0. <a href="http://www.python.org" class="spip_url spip_out auto" rel="nofollow external">http://www.python.org</a></li>
+</ul>
+<p>Some plugins may have other requirements which can be found at: 
+<a href="https://github.com/volatilityfoundation/volatility/wiki/Installation">https://github.com/volatilityfoundation/volatility/wiki/Installation</a></p>
+<h1>Quick Start</h1>
+<ol class="spip">
+<li>
+<p>Unpack the latest version of Volatility from
+volatilityfoundation.org</p>
+</li>
+<li>
+<p>To see available options, run "python vol.py -h" or "python vol.py —info"</p>
+<p>Example:</p>
+</li>
+</ol>
+<p>$ python vol.py —info
+Volatility Foundation Volatility Framework 2.6</p>
+<h2>Address Spaces</h2>
+<p>AMD64PagedMemory              - Standard AMD 64-bit address space.
+ArmAddressSpace               - Address space for ARM processors
+FileAddressSpace              - This is a direct file AS.
+HPAKAddressSpace              - This AS supports the HPAK format
+IA32PagedMemory               - Standard IA-32 paging address space.
+IA32PagedMemoryPae            - This class implements the IA-32 PAE paging address space. It is responsible
+LimeAddressSpace              - Address space for Lime
+LinuxAMD64PagedMemory         - Linux-specific AMD 64-bit address space.
+MachOAddressSpace             - Address space for mach-o files to support atc-ny memory reader
+OSXPmemELF                    - This AS supports VirtualBox ELF64 coredump format
+QemuCoreDumpElf               - This AS supports Qemu ELF32 and ELF64 coredump format
+VMWareAddressSpace            - This AS supports VMware snapshot (VMSS) and saved state (VMSS) files
+VMWareMetaAddressSpace        - This AS supports the VMEM format with VMSN/VMSS metadata
+VirtualBoxCoreDumpElf64       - This AS supports VirtualBox ELF64 coredump format
+Win10AMD64PagedMemory         - Windows 10-specific AMD 64-bit address space.
+WindowsAMD64PagedMemory       - Windows-specific AMD 64-bit address space.
+WindowsCrashDumpSpace32       - This AS supports windows Crash Dump format
+WindowsCrashDumpSpace64       - This AS supports windows Crash Dump format
+WindowsCrashDumpSpace64BitMap - This AS supports Windows BitMap Crash Dump format
+WindowsHiberFileSpace32       - This is a hibernate address space for windows hibernation files.</p>
+<h2>Profiles</h2>
+<p>VistaSP0x64           - A Profile for Windows Vista SP0 x64
+VistaSP0x86           - A Profile for Windows Vista SP0 x86
+VistaSP1x64           - A Profile for Windows Vista SP1 x64
+VistaSP1x86           - A Profile for Windows Vista SP1 x86
+VistaSP2x64           - A Profile for Windows Vista SP2 x64
+VistaSP2x86           - A Profile for Windows Vista SP2 x86
+Win10x64              - A Profile for Windows 10 x64
+Win10x64_10586        - A Profile for Windows 10 x64 (10.0.10586.306 / 2016-04-23)
+Win10x64_14393        - A Profile for Windows 10 x64 (10.0.14393.0 / 2016-07-16)
+Win10x86              - A Profile for Windows 10 x86
+Win10x86_10586        - A Profile for Windows 10 x86 (10.0.10586.420 / 2016-05-28)
+Win10x86_14393        - A Profile for Windows 10 x86 (10.0.14393.0 / 2016-07-16)
+Win2003SP0x86         - A Profile for Windows 2003 SP0 x86
+Win2003SP1x64         - A Profile for Windows 2003 SP1 x64
+Win2003SP1x86         - A Profile for Windows 2003 SP1 x86
+Win2003SP2x64         - A Profile for Windows 2003 SP2 x64
+Win2003SP2x86         - A Profile for Windows 2003 SP2 x86
+Win2008R2SP0x64       - A Profile for Windows 2008 R2 SP0 x64
+Win2008R2SP1x64       - A Profile for Windows 2008 R2 SP1 x64
+Win2008R2SP1x64_23418 - A Profile for Windows 2008 R2 SP1 x64 (6.1.7601.23418 / 2016-04-09)
+Win2008SP1x64         - A Profile for Windows 2008 SP1 x64
+Win2008SP1x86         - A Profile for Windows 2008 SP1 x86
+Win2008SP2x64         - A Profile for Windows 2008 SP2 x64
+Win2008SP2x86         - A Profile for Windows 2008 SP2 x86
+Win2012R2x64          - A Profile for Windows Server 2012 R2 x64
+Win2012R2x64_18340    - A Profile for Windows Server 2012 R2 x64 (6.3.9600.18340 / 2016-05-13)
+Win2012x64            - A Profile for Windows Server 2012 x64
+Win2016x64_14393      - A Profile for Windows Server 2016 x64 (10.0.14393.0 / 2016-07-16)
+Win7SP0x64            - A Profile for Windows 7 SP0 x64
+Win7SP0x86            - A Profile for Windows 7 SP0 x86
+Win7SP1x64            - A Profile for Windows 7 SP1 x64
+Win7SP1x64_23418      - A Profile for Windows 7 SP1 x64 (6.1.7601.23418 / 2016-04-09)
+Win7SP1x86            - A Profile for Windows 7 SP1 x86
+Win7SP1x86_23418      - A Profile for Windows 7 SP1 x86 (6.1.7601.23418 / 2016-04-09)
+Win81U1x64            - A Profile for Windows 8.1 Update 1 x64
+Win81U1x86            - A Profile for Windows 8.1 Update 1 x86
+Win8SP0x64            - A Profile for Windows 8 x64
+Win8SP0x86            - A Profile for Windows 8 x86
+Win8SP1x64            - A Profile for Windows 8.1 x64
+Win8SP1x64_18340      - A Profile for Windows 8.1 x64 (6.3.9600.18340 / 2016-05-13)
+Win8SP1x86            - A Profile for Windows 8.1 x86
+WinXPSP1x64           - A Profile for Windows XP SP1 x64
+WinXPSP2x64           - A Profile for Windows XP SP2 x64
+WinXPSP2x86           - A Profile for Windows XP SP2 x86
+WinXPSP3x86           - A Profile for Windows XP SP3 x86</p>
+<h2>Plugins</h2>
+<p>amcache                    - Print AmCache information
+apihooks                   - Detect API hooks in process and kernel memory
+atoms                      - Print session and window station atom tables
+atomscan                   - Pool scanner for atom tables
+auditpol                   - Prints out the Audit Policies from HKLM\SECURITY\Policy\PolAdtEv
+bigpools                   - Dump the big page pools using BigPagePoolScanner
+bioskbd                    - Reads the keyboard buffer from Real Mode memory
+cachedump                  - Dumps cached domain hashes from memory
+callbacks                  - Print system-wide notification routines
+clipboard                  - Extract the contents of the windows clipboard
+cmdline                    - Display process command-line arguments
+cmdscan                    - Extract command history by scanning for _COMMAND_HISTORY
+connections                - Print list of open connections [Windows XP and 2003 Only]
+connscan                   - Pool scanner for tcp connections
+consoles                   - Extract command history by scanning for _CONSOLE_INFORMATION
+crashinfo                  - Dump crash-dump information
+deskscan                   - Poolscaner for tagDESKTOP (desktops)
+devicetree                 - Show device tree
+dlldump                    - Dump DLLs from a process address space
+dlllist                    - Print list of loaded dlls for each process
+driverirp                  - Driver IRP hook detection
+drivermodule               - Associate driver objects to kernel modules
+driverscan                 - Pool scanner for driver objects
+dumpcerts                  - Dump RSA private and public SSL keys
+dumpfiles                  - Extract memory mapped and cached files
+dumpregistry               - Dumps registry files out to disk
+editbox                    - Displays information about Edit controls. (Listbox experimental.)
+envars                     - Display process environment variables
+eventhooks                 - Print details on windows event hooks
+evtlogs                    - Extract Windows Event Logs (XP/2003 only)
+filescan                   - Pool scanner for file objects
+gahti                      - Dump the USER handle type information
+gditimers                  - Print installed GDI timers and callbacks
+gdt                        - Display Global Descriptor Table
+getservicesids             - Get the names of services in the Registry and return Calculated SID
+getsids                    - Print the SIDs owning each process
+handles                    - Print list of open handles for each process
+hashdump                   - Dumps passwords hashes (LM/NTLM) from memory
+hibinfo                    - Dump hibernation file information
+hivedump                   - Prints out a hive
+hivelist                   - Print list of registry hives.
+hivescan                   - Pool scanner for registry hives
+hpakextract                - Extract physical memory from an HPAK file
+hpakinfo                   - Info on an HPAK file
+idt                        - Display Interrupt Descriptor Table
+iehistory                  - Reconstruct Internet Explorer cache / history
+imagecopy                  - Copies a physical address space out as a raw DD image
+imageinfo                  - Identify information for the image
+impscan                    - Scan for calls to imported functions
+joblinks                   - Print process job link information
+kdbgscan                   - Search for and dump potential KDBG values
+kpcrscan                   - Search for and dump potential KPCR values
+ldrmodules                 - Detect unlinked DLLs
+limeinfo                   - Dump Lime file format information
+linux_apihooks             - Checks for userland apihooks
+linux_arp                  - Print the ARP table
+linux_aslr_shift           - Automatically detect the Linux ASLR shift
+linux_banner               - Prints the Linux banner information
+linux_bash                 - Recover bash history from bash process memory
+linux_bash_env             - Recover a process’ dynamic environment variables
+linux_bash_hash            - Recover bash hash table from bash process memory
+linux_check_afinfo         - Verifies the operation function pointers of network protocols
+linux_check_creds          - Checks if any processes are sharing credential structures
+linux_check_evt_arm        - Checks the Exception Vector Table to look for syscall table hooking
+linux_check_fop            - Check file operation structures for rootkit modifications
+linux_check_idt            - Checks if the IDT has been altered
+linux_check_inline_kernel  - Check for inline kernel hooks
+linux_check_modules        - Compares module list to sysfs info, if available
+linux_check_syscall        - Checks if the system call table has been altered
+linux_check_syscall_arm    - Checks if the system call table has been altered
+linux_check_tty            - Checks tty devices for hooks
+linux_cpuinfo              - Prints info about each active processor
+linux_dentry_cache         - Gather files from the dentry cache
+linux_dmesg                - Gather dmesg buffer
+linux_dump_map             - Writes selected memory mappings to disk
+linux_dynamic_env          - Recover a process’ dynamic environment variables
+linux_elfs                 - Find ELF binaries in process mappings
+linux_enumerate_files      - Lists files referenced by the filesystem cache
+linux_find_file            - Lists and recovers files from memory
+linux_getcwd               - Lists current working directory of each process
+linux_hidden_modules       - Carves memory to find hidden kernel modules
+linux_ifconfig             - Gathers active interfaces
+linux_info_regs            - It’s like ’info registers’ in GDB. It prints out all the
+linux_iomem                - Provides output similar to /proc/iomem
+linux_kernel_opened_files  - Lists files that are opened from within the kernel
+linux_keyboard_notifiers   - Parses the keyboard notifier call chain
+linux_ldrmodules           - Compares the output of proc maps with the list of libraries from libdl
+linux_library_list         - Lists libraries loaded into a process
+linux_librarydump          - Dumps shared libraries in process memory to disk
+linux_list_raw             - List applications with promiscuous sockets
+linux_lsmod                - Gather loaded kernel modules
+linux_lsof                 - Lists file descriptors and their path
+linux_malfind              - Looks for suspicious process mappings
+linux_memmap               - Dumps the memory map for linux tasks
+linux_moddump              - Extract loaded kernel modules
+linux_mount                - Gather mounted fs/devices
+linux_mount_cache          - Gather mounted fs/devices from kmem_cache
+linux_netfilter            - Lists Netfilter hooks
+linux_netscan              - Carves for network connection structures
+linux_netstat              - Lists open sockets
+linux_pidhashtable         - Enumerates processes through the PID hash table
+linux_pkt_queues           - Writes per-process packet queues out to disk
+linux_plthook              - Scan ELF binaries’ PLT for hooks to non-NEEDED images
+linux_proc_maps            - Gathers process memory maps
+linux_proc_maps_rb         - Gathers process maps for linux through the mappings red-black tree
+linux_procdump             - Dumps a process’s executable image to disk
+linux_process_hollow       - Checks for signs of process hollowing
+linux_psaux                - Gathers processes along with full command line and start time
+linux_psenv                - Gathers processes along with their static environment variables
+linux_pslist               - Gather active tasks by walking the task_struct-&gt;task list
+linux_pslist_cache         - Gather tasks from the kmem_cache
+linux_psscan               - Scan physical memory for processes
+linux_pstree               - Shows the parent/child relationship between processes
+linux_psxview              - Find hidden processes with various process listings
+linux_recover_filesystem   - Recovers the entire cached file system from memory
+linux_route_cache          - Recovers the routing cache from memory
+linux_sk_buff_cache        - Recovers packets from the sk_buff kmem_cache
+linux_slabinfo             - Mimics /proc/slabinfo on a running machine
+linux_strings              - Match physical offsets to virtual addresses (may take a while, VERY verbose)
+linux_threads              - Prints threads of processes
+linux_tmpfs                - Recovers tmpfs filesystems from memory
+linux_truecrypt_passphrase - Recovers cached Truecrypt passphrases
+linux_vma_cache            - Gather VMAs from the vm_area_struct cache
+linux_volshell             - Shell in the memory image
+linux_yarascan             - A shell in the Linux memory image
+lsadump                    - Dump (decrypted) LSA secrets from the registry
+mac_adium                  - Lists Adium messages
+mac_apihooks               - Checks for API hooks in processes
+mac_apihooks_kernel        - Checks to see if system call and kernel functions are hooked
+mac_arp                    - Prints the arp table
+mac_bash                   - Recover bash history from bash process memory
+mac_bash_env               - Recover bash’s environment variables
+mac_bash_hash              - Recover bash hash table from bash process memory
+mac_calendar               - Gets calendar events from Calendar.app
+mac_check_fop              - Validate File Operation Pointers
+mac_check_mig_table        - Lists entires in the kernel’s MIG table
+mac_check_syscall_shadow   - Looks for shadow system call tables
+mac_check_syscalls         - Checks to see if system call table entries are hooked
+mac_check_sysctl           - Checks for unknown sysctl handlers
+mac_check_trap_table       - Checks to see if mach trap table entries are hooked
+mac_compressed_swap        - Prints Mac OS X VM compressor stats and dumps all compressed pages
+mac_contacts               - Gets contact names from Contacts.app
+mac_dead_procs             - Prints terminated/de-allocated processes
+mac_dead_sockets           - Prints terminated/de-allocated network sockets
+mac_dead_vnodes            - Lists freed vnode structures
+mac_devfs                  - Lists files in the file cache
+mac_dmesg                  - Prints the kernel debug buffer
+mac_dump_file              - Dumps a specified file
+mac_dump_maps              - Dumps memory ranges of process(es), optionally including pages in compressed swap
+mac_dyld_maps              - Gets memory maps of processes from dyld data structures
+mac_find_aslr_shift        - Find the ASLR shift value for 10.8+ images
+mac_get_profile            - Automatically detect Mac profiles
+mac_ifconfig               - Lists network interface information for all devices
+mac_interest_handlers      - Lists IOKit Interest Handlers
+mac_ip_filters             - Reports any hooked IP filters
+mac_kernel_classes         - Lists loaded c++ classes in the kernel
+mac_kevents                - Show parent/child relationship of processes
+mac_keychaindump           - Recovers possbile keychain keys. Use chainbreaker to open related keychain files
+mac_ldrmodules             - Compares the output of proc maps with the list of libraries from libdl
+mac_librarydump            - Dumps the executable of a process
+mac_list_files             - Lists files in the file cache
+mac_list_kauth_listeners   - Lists Kauth Scope listeners
+mac_list_kauth_scopes      - Lists Kauth Scopes and their status
+mac_list_raw               - List applications with promiscuous sockets
+mac_list_sessions          - Enumerates sessions
+mac_list_zones             - Prints active zones
+mac_lsmod                  - Lists loaded kernel modules
+mac_lsmod_iokit            - Lists loaded kernel modules through IOkit
+mac_lsmod_kext_map         - Lists loaded kernel modules
+mac_lsof                   - Lists per-process opened files
+mac_machine_info           - Prints machine information about the sample
+mac_malfind                - Looks for suspicious process mappings
+mac_memdump                - Dump addressable memory pages to a file
+mac_moddump                - Writes the specified kernel extension to disk
+mac_mount                  - Prints mounted device information
+mac_netstat                - Lists active per-process network connections
+mac_network_conns          - Lists network connections from kernel network structures
+mac_notesapp               - Finds contents of Notes messages
+mac_notifiers              - Detects rootkits that add hooks into I/O Kit (e.g. LogKext)
+mac_orphan_threads         - Lists threads that don’t map back to known modules/processes
+mac_pgrp_hash_table        - Walks the process group hash table
+mac_pid_hash_table         - Walks the pid hash table
+mac_print_boot_cmdline     - Prints kernel boot arguments
+mac_proc_maps              - Gets memory maps of processes
+mac_procdump               - Dumps the executable of a process
+mac_psaux                  - Prints processes with arguments in user land (<strong>argv)
+mac_psenv                  - Prints processes with environment in user land (</strong>envp)
+mac_pslist                 - List Running Processes
+mac_pstree                 - Show parent/child relationship of processes
+mac_psxview                - Find hidden processes with various process listings
+mac_recover_filesystem     - Recover the cached filesystem
+mac_route                  - Prints the routing table
+mac_socket_filters         - Reports socket filters
+mac_strings                - Match physical offsets to virtual addresses (may take a while, VERY verbose)
+mac_tasks                  - List Active Tasks
+mac_threads                - List Process Threads
+mac_threads_simple         - Lists threads along with their start time and priority
+mac_timers                 - Reports timers set by kernel drivers
+mac_trustedbsd             - Lists malicious trustedbsd policies
+mac_version                - Prints the Mac version
+mac_vfsevents              - Lists processes filtering file system events
+mac_volshell               - Shell in the memory image
+mac_yarascan               - Scan memory for yara signatures
+machoinfo                  - Dump Mach-O file format information
+malfind                    - Find hidden and injected code
+mbrparser                  - Scans for and parses potential Master Boot Records (MBRs)
+memdump                    - Dump the addressable memory for a process
+memmap                     - Print the memory map
+messagehooks               - List desktop and thread window message hooks
+mftparser                  - Scans for and parses potential MFT entries
+moddump                    - Dump a kernel driver to an executable file sample
+modscan                    - Pool scanner for kernel modules
+modules                    - Print list of loaded modules
+multiscan                  - Scan for various objects at once
+mutantscan                 - Pool scanner for mutex objects
+netscan                    - Scan a Vista (or later) image for connections and sockets
+notepad                    - List currently displayed notepad text
+objtypescan                - Scan for Windows object type objects
+patcher                    - Patches memory based on page scans
+poolpeek                   - Configurable pool scanner plugin
+pooltracker                - Show a summary of pool tag usage
+printkey                   - Print a registry key, and its subkeys and values
+privs                      - Display process privileges
+procdump                   - Dump a process to an executable file sample
+pslist                     - Print all running processes by following the EPROCESS lists
+psscan                     - Pool scanner for process objects
+pstree                     - Print process list as a tree
+psxview                    - Find hidden processes with various process listings
+qemuinfo                   - Dump Qemu information
+raw2dmp                    - Converts a physical memory sample to a windbg crash dump
+screenshot                 - Save a pseudo-screenshot based on GDI windows
+servicediff                - List Windows services (ala Plugx)
+sessions                   - List details on _MM_SESSION_SPACE (user logon sessions)
+shellbags                  - Prints ShellBags info
+shimcache                  - Parses the Application Compatibility Shim Cache registry key
+shutdowntime               - Print ShutdownTime of machine from registry
+sockets                    - Print list of open sockets
+sockscan                   - Pool scanner for tcp socket objects
+ssdt                       - Display SSDT entries
+strings                    - Match physical offsets to virtual addresses (may take a while, VERY verbose)
+svcscan                    - Scan for Windows services
+symlinkscan                - Pool scanner for symlink objects
+thrdscan                   - Pool scanner for thread objects
+threads                    - Investigate _ETHREAD and _KTHREADs
+timeliner                  - Creates a timeline from various artifacts in memory
+timers                     - Print kernel timers and associated module DPCs
+truecryptmaster            - Recover TrueCrypt 7.1a Master Keys
+truecryptpassphrase        - TrueCrypt Cached Passphrase Finder
+truecryptsummary           - TrueCrypt Summary
+unloadedmodules            - Print list of unloaded modules
+userassist                 - Print userassist registry keys and information
+userhandles                - Dump the USER handle tables
+vaddump                    - Dumps out the vad sections to a file
+vadinfo                    - Dump the VAD info
+vadtree                    - Walk the VAD tree and display in tree format
+vadwalk                    - Walk the VAD tree
+vboxinfo                   - Dump virtualbox information
+verinfo                    - Prints out the version information from PE images
+vmwareinfo                 - Dump VMware VMSS/VMSN information
+volshell                   - Shell in the memory image
+win10cookie                - Find the ObHeaderCookie value for Windows 10
+windows                    - Print Desktop Windows (verbose details)
+wintree                    - Print Z-Order Desktop Windows Tree
+wndscan                    - Pool scanner for window stations
+yarascan                   - Scan process or kernel memory with Yara signatures</p>
+<ol start="3">
+<li>
+<p>To get more information on a Windows memory sample and to make sure Volatility
+supports that sample type, run ’python vol.py imageinfo -f ’ or ’python vol.py kdbgscan -f ’</p>
+<p>Example:</p>
+<p>$ python vol.py imageinfo -f WIN-II7VOJTUNGL-20120324-193051.raw 
+Volatility Foundation Volatility Framework 2.6
+Determining profile based on KDBG search...</p>
+<pre><code>       Suggested Profile(s) : Win2008R2SP0x64, Win7SP1x64, Win7SP0x64, Win2008R2SP1x64 (Instantiated with Win7SP0x64)
+AS Layer1 : AMD64PagedMemory (Kernel AS)
+AS Layer2 : FileAddressSpace (/Path/to/WIN-II7VOJTUNGL-20120324-193051.raw)
+PAE type : PAE
+DTB : 0x187000L
+KDBG : 0xf800016460a0
+Number of Processors : 1
+Image Type (Service Pack) : 1
+KPCR for CPU 0 : 0xfffff80001647d00L
+KUSER_SHARED_DATA : 0xfffff78000000000L
+Image date and time : 2012-03-24 19:30:53 UTC+0000
+Image local date and time : 2012-03-25 03:30:53 +0800</code></pre>
+<p>If multiple profiles are suggested by imageinfo or kdbgscan, or if you’re having trouble analyzing 
+Windows 7 or later memory samples, please see the guidelines here:</p>
+<pre><code> https://github.com/volatilityfoundation/volatility/wiki/2.6-Win-Profiles</code></pre>
+</li>
+<li>
+<p>Run some other plugins. -f is a required option for all plugins. Some
+also require/accept other options. Run "python vol.py  -h" for
+more information on a particular command.  A Command Reference wiki
+is also available on the GitHub site:</p>
+<pre><code> https://github.com/volatilityfoundation/volatility/wiki</code></pre>
+<p>as well as Basic Usage:</p>
+<pre><code> &lt;a href="https://github.com/volatilityfoundation/volatility/wiki/Volatility-Usage" class='spip_url spip_out auto' rel='nofollow external'&gt;&lt;span class="base64" title="aHR0cHM6Ly9naXRodWIuY29tL3ZvbGF0aWxpdHlmb3VuZGF0aW9uL3ZvbGF0aWxpdHkvd2lraS9Wb2xhdGlsaXR5LVVzYWdl"&gt;&lt;/span&gt;&lt;/a&gt;</code></pre>
+</li>
+</ol>
+<h1>Licensing and Copyright</h1>
+<p>Copyright (C) 2007-2016 Volatility Foundation</p>
+<p>All Rights Reserved</p>
+<p>Volatility is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.</p>
+<p>Volatility is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with Volatility.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<h1>Bugs and Support</h1>
+<p>There is no support provided with Volatility. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. </p>
+<p>If you think you’ve found a bug, please report it at:</p>
+<pre><code>https://github.com/volatilityfoundation/volatility/issues</code></pre>
+<p>In order to help us solve your issues as quickly as possible,
+please include the following information when filing a bug:</p>
+<ul class="spip">
+<li>The version of volatility you’re using</li>
+<li>The operating system used to run volatility</li>
+<li>The version of python used to run volatility</li>
+<li>The suspected operating system of the memory image</li>
+<li>The complete command line you used to run volatility</li>
+</ul>
+<p>Depending on the operating system of the memory image, you may need to provide
+additional information, such as:</p>
+<p>For Windows:</p>
+<ul class="spip">
+<li>The suspected Service Pack of the memory image</li>
+</ul>
+<p>For Linux:</p>
+<ul class="spip">
+<li>The suspected kernel version of the memory image</li>
+</ul>
+<p>Other options for communication can be found at:
+<a href="https://github.com/volatilityfoundation/volatility/wiki" class="spip_url spip_out auto" rel="nofollow external">https://github.com/volatilityfoundation/volatility/wiki</a></p>
+<h1>Missing or Truncated Information</h1>
+<p>Volatility Foundation makes no claims about the validity or correctness of the
+output of Volatility. Many factors may contribute to the
+incorrectness of output from Volatility including, but not
+limited to, malicious modifications to the operating system,
+incomplete information due to swapping, and information corruption on
+image acquisition. </p>
+<h1>Command Reference </h1>
+<p>The following url contains a reference of all commands supported by 
+Volatility.</p>
+<pre><code>&lt;a href="https://github.com/volatilityfoundation/volatility/wiki" class='spip_url spip_out auto' rel='nofollow external'&gt;&lt;span class="base64" title="aHR0cHM6Ly9naXRodWIuY29tL3ZvbGF0aWxpdHlmb3VuZGF0aW9uL3ZvbGF0aWxpdHkvd2lraQ=="&gt;&lt;/span&gt;&lt;/a&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='ajaxbloc' data-ajax-env='QarOXKaaOfVh6Tu+L8o4sPW/QK5SJK3GN1n2YNg0tzd2a5z+JC8acB9sRUkWbFNGsJkg547DM6/7uWy2DFYbQOXTRjapJammXEjkzzqDH+hfmvkirEVPYAL/NRwsQGiEcijJKcHwauxDLbmyeQHeg3SwA9CUf++hgt6P' data-origin="/en/Tools/Forensic/volatility">
+<a name='pagination_derniers_outils' id='pagination_derniers_outils'></a>
+<div  class="small-12 columns"  >
+<div class="tile">
+<div class="t-body tb-padding"  >
+<h4>
+Tools
+</h4>
+<ul class="spip">
+<li class="ts">
+<a href="en/Tools/Forensic/unpacker" title="">unpacker</a>
+<span class="gris">(8 November 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/VirtualDeobfuscator" title="">VirtualDeobfuscator</a>
+<span class="gris">(8 November 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/FireEye-Labs-Obfuscated-String-Solver" title="">FireEye Labs Obfuscated&nbsp;(...)</a>
+<span class="gris">(8 November 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/PackerAttacker" title="">PackerAttacker</a>
+<span class="gris">(8 November 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/de4dot" title="">de4dot</a>
+<span class="gris">(8 November 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/cuckoo" title="">cuckoo</a>
+<span class="gris">(7 February 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/dff" title="">dff</a>
+<span class="gris">(7 February 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/binwalk" title="">binwalk</a>
+<span class="gris">(7 February 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/foremost" title="">foremost</a>
+<span class="gris">(7 February 2016)</span>
+</li>
+<li class="ts">
+<a href="en/Tools/Forensic/SleuthKit" title="">SleuthKit</a>
+<span class="gris">(7 February 2016)</span>
+</li>
+</ul>
+<div class="pagination-centered">
+<ul class="pagination">
+<li class="current"><a href='/en/Tools/Forensic/volatility?debut_derniers_outils=0#pagination_derniers_outils' class='lien_pagination gris' rel='nofollow'>0</a></li>
+<li><a href='/en/Tools/Forensic/volatility?debut_derniers_outils=10#pagination_derniers_outils' class='lien_pagination gris' rel='nofollow'>10</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><!--ajaxbloc--></div><!--ajaxbloc-->            </main>
+<footer id="footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+<div class="text-center">
+<div class="columns small-12">
+<img src="IMG/siteon0.svg?1574327304" class="vmiddle grayscale" alt="Root-Me" width="48" height="48"/>
+</div>
+<div class="columns small-12">
+<a class="gris2" title="Confidentiality" href="https://www.root-me.org?page=structure&amp;inc=page-confidentialite&amp;lang=en">Confidentiality</a>
+&nbsp;|&nbsp;
+<a class="gris2" href="https://www.root-me.org/en/Informations/Legal-Disclaimer/">Legal Disclaimer</a>
+&nbsp;|&nbsp;
+<a class="gris2" title="Terms of Service" href="https://www.root-me.org?page=structure&amp;inc=page-CGU&amp;lang=en">Terms of Service</a><br/>
+Root Me : Hacking and Information Security learning platform<br/>
+©&nbsp;2010&nbsp;-&nbsp;2021<br/>
+<hr/>
+</div>
+</div>
+<div class="text-center">
+<div class="small-10 large-3 small-centered columns">
+<div class="small-3 columns"><a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fwww.root-me.org%2F&region=follow_link&screen_name=rootme_org&tw_p=followbutton" title="Twitter"><img src='squelettes/img/twitter.svg?1573023931' alt='Twitter' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+<div class="small-3 columns"><a href="https://www.linkedin.com/groups/Root-Me-hacking-and-information-8180601" title="Linkedin"><img src='squelettes/img/linkedin.svg?1573023925' alt='Linkedin' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>                
+<div class="small-3 columns"><a href="https://www.root-me.org?page=flux_rss&amp;lang=en" title="Dynamic Stream"><img src='squelettes/img/rss.svg?1573023935' alt='Dynamic Stream' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+<div class="small-3 columns"><a href="https://facebook.com/" title="Facebook"><img src='squelettes/img/facebook.svg?1573024094' alt='Facebook' class='vmiddle grayscale grayscale_hoveroff' style='max-width: 24px; max-height: 24px' /></a></div>
+</div>
+</div>
+</footer>        </div>
+</div>
+</div>
+</body>
+</html>
