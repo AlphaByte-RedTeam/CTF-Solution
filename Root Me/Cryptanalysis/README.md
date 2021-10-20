@@ -11,3 +11,5 @@
 | 7 	 | [Hash-NT](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-NT_Complete) | `Easy` |
 | 8	 | [Hash-SHA2](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Hash-SHA2_Complete) | `Easy` |
 | 9	 | [Shift Cipher](https://github.com/aveenain/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Shift%20Cipher_Complete) | `Moderate` |
+| 10 	 | [Cisco-Salted Password](https://github.com/AlphaByte-RedTeam/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Cisco-Salted%20Password_Complete) |
+| 11	 | [Pixel Madness](https://github.com/AlphaByte-RedTeam/CTF-Solution/tree/main/Root%20Me/Cryptanalysis/Pixel%20Madness_Complete) |
