@@ -1,2 +1,16 @@
 # openssl passwd -1 -salt mERr -table -in /usr/share/wordlists/rockyou.txt | grep 3wXS4kSM1
 dolphinsforever $1$mERr$A419.HL58lq743wXS4kSM1
+
+# john --format=md5crypt --fork=4 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 3 OpenMP threads per process (12 total across 4 processes)
+Node numbers 1-4 of 4 (fork)
+Press 'q' or Ctrl-C to abort, almost any other key for status
+P@ssw0rd!1       (administrator)
+4 1g 0:00:00:18 DONE (2021-10-20 18:11) 0.05321g/s 140536p/s 140536c/s 140536C/s PAJANIST2413..P@55Word!!
+2 0g 0:00:00:21 DONE (2021-10-20 18:11) 0g/s 161419p/s 161419c/s 161419C/s !!scampi!!.abygurl69
+3 0g 0:00:00:22 DONE (2021-10-20 18:11) 0g/s 158487p/s 158487c/s 158487C/s !!diosmeguia!!.a6_123
+1 0g 0:00:00:22 DONE (2021-10-20 18:11) 0g/s 155492p/s 155492c/s 155492C/s !!Leeds.ie168
+Waiting for 3 children to terminate
+Session completed
