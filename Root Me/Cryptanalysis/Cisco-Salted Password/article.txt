@@ -29,3 +29,8 @@ Is my thought process correct?
 
 Yes,
 You get different hash each time because different salt is used each time. And that salt is shown in cleartext.
+
+
+
+REFERENCE: https://learningnetwork.cisco.com/s/question/0D53i00000Ksroy/hashing-md5-for-password
+	   https://www.petenetlive.com/KB/Article/0000940
