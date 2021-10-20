@@ -1,0 +1,20 @@
+$1$VkQd$Vma3sR7B1LL.v5lgy1NYc/
+|-|----|---------------------|
+ ^   ^    ^
+ |   |    |
+ |   |    `-> Hash (salt + password)
+ |   |
+ |   `-> base64 salt (4 chars.)
+ |
+ `-> Hash type (md5)
+
+
+# FreeBSD MD5 crypt
+$ openssl passwd -1 Password123
+$1$endVjKEy$x32lAjGU2Ovd7f/ZrqawV/
+
+# Cisco "type 5" format
+$ openssl passwd -1 -salt VkQd Password123
+$1$VkQd$Vma3sR7B1LL.v5lgy1NYc/
+
+REFERENCE: https://axcheron.github.io/cracking-cisco-type-5-passwords/
