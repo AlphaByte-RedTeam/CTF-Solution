@@ -1,0 +1,31 @@
+The salt is actually kept in un-hashed format attached to the actual password hash string. If you look at the hash string in Cisco router configuration, you will see that it contains 3 $ symbols. It starts with one, then it has a number denoting the hashing algorithm, then another $ sign and the salt string, and then last $ symbol and the actual hash. So, once you copy this string from one router to another, it knows what the salt is and it knows what algorithm to use to re-create the same hash. This way you keep password encryption unique and still carry password from one device to another.
+
+
+
+Alright, So I generated the hash by using test as a password:
+username cisco secret 5 $1$87eM$g1BiQ7QdrYDUigcodl9Es.
+So what I got is this:
+
+1 => This means MD5 hashing was used?
+
+87eM => This is the Salt??
+
+g1BiQ7QdrYDUigcodl9Es. => This is the password 
+
+You said:
+and then last $ symbol and the actual hash.
+
+This doesn't make sense.... Because If I regenerate it again, I get this:
+$1$uZNm$1YGBmnFViBPqIE.vbKRY7/
+The last part is the same password, but has a different hash? I don't get it.
+
+EDIT:
+I think got it after reading again
+So the salt of uZNm is added to to the password of test. Which makes uZNmtest, which in turn becomes 1YGBmnFViBPqIE.vbKRY7/
+Is my thought process correct?
+
+
+
+
+Yes,
+You get different hash each time because different salt is used each time. And that salt is shown in cleartext.

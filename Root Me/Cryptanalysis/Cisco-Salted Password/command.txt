@@ -1,0 +1,2 @@
+# openssl passwd -1 -salt mERr -table -in /usr/share/wordlists/rockyou.txt | grep 3wXS4kSM1
+dolphinsforever $1$mERr$A419.HL58lq743wXS4kSM1
