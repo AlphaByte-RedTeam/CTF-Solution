@@ -1,4 +1,4 @@
-# CTF Solution
+# CTF Challenge
 
 Platform: Root Me </br>
 Type: `Cryptanalysis` </br>
