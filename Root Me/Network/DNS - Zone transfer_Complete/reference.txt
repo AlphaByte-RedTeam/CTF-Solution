@@ -1,0 +1,5 @@
+https://www.acunetix.com/blog/articles/dns-zone-transfers-axfr/
+
+https://www.verisign.com/en_US/website-presence/online/how-dns-works/index.xhtml
+
+https://beaglesecurity.com/blog/vulnerability/dns-zone-transfer.html
